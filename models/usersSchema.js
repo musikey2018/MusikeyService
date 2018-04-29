@@ -22,9 +22,9 @@ module.exports = (function musickeyUserSchema () {
         comments:[{type:String}]
 	};
 
-    var collectionName = 'users';
+    var collectionName = 'musickeyUser';
     var musickeyUserSchema = mongoose.Schema(schema);
-    var users = mongoose.model(collectionName, musickeyUserSchema);
+    var musickeyUserSchema = mongoose.model(collectionName, musickeyUserSchema);
 
-    return users;
+    return musickeyUserSchema;
 })();
