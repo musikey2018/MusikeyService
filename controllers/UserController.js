@@ -20,6 +20,7 @@ function usersController() {
     that.register = function (req, res, next) {
         try {
 
+            console.log(req)
             users.find({email: req.params.email}, function (err, result) {
 
                 if (result.length > 0) {
@@ -97,6 +98,7 @@ function usersController() {
 
     // Login
     that.login = function (req, res, next) {
+        console.log("req " + req)
         var email = req.params.email;
         var password = req.params.password;
         console.log("EMail " + email)
