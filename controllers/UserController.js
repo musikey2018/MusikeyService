@@ -11,7 +11,7 @@ function usersController() {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'victorcitysquare17@gmail.com',
+            user: 'musikey2018@gmail.com',
             pass: '090078601!'
         }
     });
@@ -63,8 +63,8 @@ function usersController() {
 
                                 transporter.sendMail({
                                     to: user.email,
-                                    subject: "Victor City Registration Success",
-                                    text: "You have successfully registered to Victor City. Exploration of World is now on tip of your hand"
+                                    subject: "Musikey - ( platform to share your music) Registration Success",
+                                    text: "You have successfully registered to Musikey. Exploration of World is now on tip of your hand"
                                 }, function (error, info) {
                                     if (error) {
                                         console.log("UtilController that.sendEmail() Email Send error ", error);

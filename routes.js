@@ -6,7 +6,7 @@ module.exports = function (app) {
 
 
     app.get('/', function (req, res, next) {
-        return res.send("WELCOME TO Victor City Rest services");
+        return res.send("Musikey 2018 Rest services");
     });
 
     app.post('/register', user.register); //Register User
