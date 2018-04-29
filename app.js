@@ -1,6 +1,6 @@
 var restify = require('restify');
 var config = require('./config');
-var app = restify.createServer({name:'victor'});
+var app = restify.createServer({name:'musikey'});
 
 app.use(restify.fullResponse());
 app.use(restify.bodyParser());
