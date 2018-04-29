@@ -15,9 +15,7 @@ module.exports = (function usersSchema () {
         imageURL: {type: String},
         verificationCode: {type: String},
         friends: [{type:String}],
-        comments:[{type:String}],
-        checkIns:[{type:String}],
-        images:[{type:String}]
+        comments:[{type:String}]
 	};
 
     var collectionName = 'users';
