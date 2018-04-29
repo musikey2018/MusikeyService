@@ -1,0 +1,63 @@
+<merge  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:id="@+id/relativelayout1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        >
+        <LinearLayout
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_tab"
+            android:layout_weight="100"
+
+            >
+
+        <EditText
+            android:layout_marginLeft="5dp"
+            android:layout_width="0dp"
+            android:layout_weight="90"
+            android:gravity="bottom"
+            android:layout_height="match_parent"
+            android:hint="Search place ..."
+
+            android:id="@+id/search_bar"/>
+            <Button
+                android:id="@+id/searchButton"
+                android:layout_width="0dp"
+                android:layout_weight="10"
+                android:background="@drawable/ic_search"
+                android:layout_height="match_parent" />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/map_icon_tab"
+            android:layout_weight="100"
+            >
+            <TextView
+                android:id="@+id/resultCount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="75"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:textStyle="normal"
+                android:textColor="@color/grey"
+                android:text=""/>
+            <ImageButton
+                android:id="@+id/displayOnMapBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_map_black"
+                android:layout_weight="8"
+                />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</merge>

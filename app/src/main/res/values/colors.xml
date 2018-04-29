@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#fff</color>
+    <color name="black">#000000</color>
+    <color name="grey">#bfbfbf</color>
+    <color name="lightblue">#00a0f0</color>
+    <color name="Rating1">#4A7BA7</color>
+
+    <!-- Rating circle color for an earthquake with Rating between 2 and 3 -->
+    <color name="Rating2">#04B4B3</color>
+
+    <!-- Rating circle color for an earthquake with Rating between 3 and 4 -->
+    <color name="Rating3">#10CAC9</color>
+
+    <!-- Rating circle color for an earthquake with Rating between 4 and 5 -->
+    <color name="Rating4">#F5A623</color>
+
+    <!-- Rating circle color for an earthquake with Rating between 5 and 6 -->
+    <color name="Rating5">#FF7D50</color>
+
+    <!-- Rating circle color for an earthquake with Rating between 6 and 7 -->
+    <color name="Rating6">#FC6644</color>
+
+    <!-- Rating circle color for an earthquake with Rating between 7 and 8 -->
+    <color name="Rating7">#E75F40</color>
+
+    <!-- Rating circle color for an earthquake with Rating between 8 and 9 -->
+    <color name="Rating8">#E13A20</color>
+
+    <!-- Rating circle color for an earthquake with Rating between 9 and 10 -->
+    <color name="Rating9">#D93218</color>
+
+    <!-- Rating circle color for an earthquake with Rating over 10 -->
+    <color name="Rating10plus">#C03823</color>
+
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPane">#33C2CAC9</color>
+
+    <color name="primary">#E43F3F</color>
+    <color name="primary_dark">#E12929</color>
+    <color name="primary_darker">#CC1D1D</color>
+    <color name="accent">#FFFFFF</color>
+
+    <color name="one">#F44336</color>
+    <color name="two">#E91E63</color>
+    <color name="three">#9C27B0</color>
+    <color name="four">#673AB7</color>
+    <color name="five">#3F51B5</color>
+    <color name="six">#2196F3</color>
+    <color name="seven">#03A9F4</color>
+
+    <color name="jet">#222222</color>
+    <color name="oil">#333333</color>
+    <color name="monsoon">#777777</color>
+    <color name="jumbo">#888888</color>
+    <color name="aluminum">#999999</color>
+    <color name="base">#AAAAAA</color>
+    <color name="iron">#CCCCCC</color>
+
+</resources>

@@ -1,0 +1,44 @@
+<merge  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:id="@+id/relativelayout1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        >
+        <fragment
+            android:id="@+id/place_autocomplete_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+            />
+
+        <!--<SearchView-->
+            <!--android:id="@+id/search_bar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+           <!--&gt;</SearchView>-->
+        <LinearLayout
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/map_icon_tab"
+            android:layout_weight="100"
+            >
+            <Button
+                android:id="@+id/displayOnMapBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="12sp"
+                android:text="@string/displayonmap"
+                android:layout_weight="75"
+                />
+            <ImageButton
+                android:id="@+id/findmyLocationBtn"
+                android:background="@drawable/findme"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</merge>
