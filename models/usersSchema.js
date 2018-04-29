@@ -1,5 +1,5 @@
 // Model for the users
-module.exports = (function musickeyUserSchema () {
+module.exports = (function musikeyUserSchema () {
 
 	var mongoose = require('../db').mongoose;
 
@@ -23,8 +23,8 @@ module.exports = (function musickeyUserSchema () {
 	};
 
     var collectionName = 'musickeyUser';
-    var musickeyUserSchema = mongoose.Schema(schema);
-    var musickeyUserSchema = mongoose.model(collectionName, musickeyUserSchema);
+    var musikeyUserSchema = mongoose.Schema(schema);
+    var musikeyUserSchema = mongoose.model(collectionName, musikeyUserSchema);
 
-    return musickeyUserSchema;
+    return musikeyUserSchema;
 })();

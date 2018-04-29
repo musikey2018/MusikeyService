@@ -3,7 +3,7 @@
 function usersController() {
 
     var that = this;
-    var users = require('../models/musickeyUserSchema');
+    var users = require('../models/musikeyUserSchema');
     var generalResponse = require('./GeneralResponse');
     var bcrypt = require('bcrypt');
     var mongoose = require('../db').mongoose;

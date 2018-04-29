@@ -3,7 +3,7 @@
 function friendController() {
 
     var that = this;
-    var users = require('../models/musickeyUserSchema');
+    var users = require('../models/musikeyUserSchema');
     var generalResponse = require('./GeneralResponse');
     var mongoose = require('../db').mongoose;
 

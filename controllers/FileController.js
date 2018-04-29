@@ -8,7 +8,7 @@ function FileController() {
     var generalResponse = require('./GeneralResponse');
     var request = require('request').defaults({encoding: null});
     var cloudinary = require('cloudinary');
-    var users = require('../models/usersSchema');
+    var users = require('../models/musikeyUserSchema');
 
 
     cloudinary.config({
