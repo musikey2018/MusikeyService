@@ -10,7 +10,7 @@ function LocationController() {
     mongoose.set('debug', true);
 
     var generalResponse = require('./GeneralResponse');
-    var userlocations = require('../models/userLocatioSchema');
+    var userlocations = require('../models/userLocationSchema');
 
     var config = require("../maps-config.js");
 
