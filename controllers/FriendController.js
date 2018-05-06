@@ -1,4 +1,4 @@
-//This Controller deals with all functionalities of
+//This Controller deals with all functionalities for friends feature
 
 function friendController() {
 
