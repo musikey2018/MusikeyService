@@ -1,4 +1,6 @@
-// Model for the users
+/**
+ * Created by Bilawal Aziz on 30.04.18.
+ */
 module.exports = (function musickeyUserSchema () {
 
 	var mongoose = require('../db').mongoose;

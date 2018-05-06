@@ -1,5 +1,5 @@
 /**
- * Created by mujahidmasood on 12.08.17.
+ * Created by Bilawal Aziz on 30.04.18.
  */
 
 function LocationController() {
@@ -10,7 +10,7 @@ function LocationController() {
     mongoose.set('debug', true);
 
     var generalResponse = require('./GeneralResponse');
-    var locations = require('../models/locationSchema');
+    var userlocations = require('../models/userLocatioSchema');
 
     var config = require("../maps-config.js");
 
@@ -30,7 +30,7 @@ function LocationController() {
 
         //TODO search requested location in database
 
-        var query = locations.find(parameters)
+        var query = userlocations.find(parameters)
         query.exec(function (err, result) {
             if (err) {
                 console.log("Error " + err)
@@ -56,21 +56,12 @@ function LocationController() {
                                         location: req.params.location,
                                         radius: req.params.radius,
                                         keyword: req.params.keyword,
-                                        opennow: req.params.opennow,
                                         geometry: locationData.geometry,
                                         language: "en",
-                                        icon: locationData.icon,
                                         id: locationData.id,
                                         name: locationData.name,
-                                        opening_hours: locationData.opening_hours,
                                         photos: locationData.photos,
                                         place_id: locationData.place_id,
-                                        price_level: locationData.price_level,
-                                        rating: locationData.rating,
-                                        reference: locationData.reference,
-                                        scope: locationData.scope,
-                                        types: locationData.types,
-                                        vicinity: locationData.vicinity
                                     }
                                     searchResults.push(location)
                                 }
@@ -81,11 +72,11 @@ function LocationController() {
                         console.log("Search results .length " + searchResults.length)
 
 
-                        locations.create(
+                        userlocations.create(
                             searchResults
                             , function (err, result) {
                                 if (err) {
-                                    console.log("Saving locations in db failed " + err)
+                                    console.log("Saving userlocations in db failed " + err)
                                     return res.send(generalResponse.sendFailureResponse(false, 400, error))
                                 }
                                 else {

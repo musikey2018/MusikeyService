@@ -1,4 +1,4 @@
-//This Controller deals with all functionalities of Student
+//This Controller deals with all functionalities of application user
 
 function usersController() {
 
