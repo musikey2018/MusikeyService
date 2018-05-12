@@ -3,7 +3,7 @@ module.exports = function (app) {
     var location = require('./controllers/LocationController');
     var fileController = require('./controllers/FileController');
     var friend = require('./controllers/FriendController');
-    var event = require('./controllers/EventController');
+    var event = require('./controllers/EventsController');
 
 
 
