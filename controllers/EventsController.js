@@ -138,7 +138,7 @@ function EventsController() {
                         is_public: parameters.is_public,
                         is_expired: false,
                         timing: parameters.eventTime,
-                        place_id: parameters.name,
+                        place_id: parameters.placename,
                         creator: parameters.email
                     };
 
