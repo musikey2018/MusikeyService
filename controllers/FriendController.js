@@ -64,6 +64,7 @@ function friendController() {
     };
 
     that.getFriendListByEmail = function (req, res, next) {
+        
 
         var friendList = [];
         var userEmails=[];
@@ -74,7 +75,7 @@ function friendController() {
             else if (data!=null) {
 
 
-                users.find({ "email": { "$in": data.friends }}, function (err, result) {
+                users.find({ "email"    : { "$in": data.friends }}, function (err, result) {
 
 
                     if (err)

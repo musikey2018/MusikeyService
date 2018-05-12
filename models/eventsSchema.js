@@ -13,9 +13,10 @@ module.exports = (function eventsSchema() {
         genere: {type: String},
         is_public: {type: Boolean},
         is_expired: {type: String},
-        timings: {type: String},
+        timing: {type: String},
         participants: {type: [Object]},
         place_id: {type: String},
+        creator: {type: String}
     };
 
     var collectionName = 'events';
