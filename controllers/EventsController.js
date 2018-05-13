@@ -202,7 +202,7 @@ function EventsController() {
                     console.log(err);
                     return res.send(generalResponse.sendFailureResponse("Error Occured While registering fot e an event", 400, err));
                 }
-                return res.send(generalResponse.sendSuccessResponse("registered for event successfully", 200, "OK"));
+                return res.send(generalResponse.sendSuccessResponse("you are registered for event successfully", 200, eventDoc));
             });
             return next();
 
