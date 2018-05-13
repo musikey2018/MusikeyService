@@ -196,17 +196,13 @@ function EventsController() {
 
             console.log(req.params);
             events.findOneAndUpdate({timing: req.params.eventTime, location: req.params.eventLocation},{ $push: { participants:req.params.email}}, { new: true }, function (err, eventDoc) {
-                console.log('found event');
+                console.log('updated event');
                 console.log(eventDoc);
-                if (eventDoc.length > 0) {
-                    return res.send(generalResponse.sendSuccessResponse("registered for event successfully", 200, eventDoc));
+                if (err) {
+                    console.log(err);
+                    return res.send(generalResponse.sendFailureResponse("Error Occured While registering fot e an event", 400, err));
                 }
-                else {
-                    if (err) {
-                        console.log(err);
-                        return res.send(generalResponse.sendFailureResponse("Error Occured While registering fot e an event", 400, err));
-                    }
-                }
+                return res.send(generalResponse.sendSuccessResponse("registered for event successfully", 200, "OK"));
             });
             return next();
 
