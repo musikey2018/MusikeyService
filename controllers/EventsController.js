@@ -124,7 +124,7 @@ function EventsController() {
         try {
 
             console.log(req);
-            return res.send(generalResponse.sendSuccessResponse("Event creation Was successful", 200, req));
+            //return res.send(generalResponse.sendSuccessResponse("Event creation Was successful", 200, result));
             events.find({email: req.params.email, time: req.params.eventTime, location: req.params.eventLocation}, function (err, result) {
 
                 if (result.length > 0) {
