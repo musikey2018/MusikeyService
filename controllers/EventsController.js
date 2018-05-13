@@ -196,7 +196,7 @@ function EventsController() {
 
             console.log(req.params);
             events.findOne({timing: req.params.eventTime, location: req.params.eventLocation}, function (err, eventDoc) {
-
+                console.log(eventDoc);
                 if (eventDoc.length > 0) {
                     eventDoc.participants.push(req.params.email);
                     eventDoc.save();
