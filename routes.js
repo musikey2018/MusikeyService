@@ -34,6 +34,8 @@ module.exports = function (app) {
 
     app.get('/searchEvent?:email/:eventTime/:name', event.searchEvent);  // search event
     app.post('/createEvent', event.createEvent);  //create event
+    app.post('/joinEvent', event.joinEvent);  //join event
+    
 
 
 

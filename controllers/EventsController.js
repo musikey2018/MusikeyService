@@ -189,6 +189,35 @@ function EventsController() {
             return res.send(generalResponse.sendFailureResponse("/register:Exception Occured", 400, ex));
         }
     };
+
+    // add participant
+    that.joinEvent = function (req, res, next) {
+        try {
+
+            console.log(req.params);
+            events.findOne({timing: req.params.eventTime, location: req.params.eventLocation}, function (err, eventDoc) {
+
+                if (eventDoc.length > 0) {
+                    eventDoc.participants.push(req.params.email);
+                    eventDoc.save();
+                    return res.send(generalResponse.sendSuccessResponse("registered for event successfully", 200, eventDoc));
+                }
+                else {
+                    if (err) {
+                        console.log(err);
+                        return res.send(generalResponse.sendFailureResponse("Error Occured While registering fot e an event", 400, err));
+                    }
+                }
+            });
+            return next();
+
+
+        }
+        catch (ex) {
+            console.log("Exception:" + ex);
+            return res.send(generalResponse.sendFailureResponse("/joinEvent:Exception Occured", 400, ex));
+        }
+    };
     return that;
 
 };
