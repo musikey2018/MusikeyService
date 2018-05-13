@@ -108,7 +108,7 @@ function EventsController() {
      that.searchEvent = function (req, res, next) {
         try {
 
-            console.log(req)
+            console.log(req.params);
             events.find({creator: req.params.email, timing: req.params.eventTime, name: req.params.name}, function (err, result) {
 
                 if (result.length > 0) {
