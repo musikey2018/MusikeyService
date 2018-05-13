@@ -201,6 +201,8 @@ function EventsController() {
                 if (eventDoc.length > 0) {
                     eventDoc.participants.push(req.params.email);
                     eventDoc.save(function (err, updateDoc) {
+                        console.log('updated event');
+                        console.log(updateDoc);
                         if (err) {
                             console.log(err);
                             return res.send(generalResponse.sendFailureResponse("Error Occured While registering fot e an event", 400, err));
