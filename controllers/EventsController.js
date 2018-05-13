@@ -199,8 +199,14 @@ function EventsController() {
                 console.log(eventDoc);
                 if (eventDoc.length > 0) {
                     eventDoc.participants.push(req.params.email);
-                    eventDoc.save();
-                    return res.send(generalResponse.sendSuccessResponse("registered for event successfully", 200, eventDoc));
+                    eventDoc.save(function (err, updateDoc) {
+                        if (err) {
+                            console.log(err);
+                            return res.send(generalResponse.sendFailureResponse("Error Occured While registering fot e an event", 400, err));
+                        }
+                        return res.send(generalResponse.sendSuccessResponse("registered for event successfully", 200, updateDoc));
+                      });
+                    
                 }
                 else {
                     if (err) {
