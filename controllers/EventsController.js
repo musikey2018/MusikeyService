@@ -199,7 +199,7 @@ function EventsController() {
                 console.log('found event');
                 console.log(eventDoc);
                 if (eventDoc.length > 0) {
-                    eventDoc.participants.push(req.params.email);
+                    eventDoc.participants.push({'email':req.params.email});
                     eventDoc.save(function (err, updateDoc) {
                         console.log('updated event');
                         console.log(updateDoc);
