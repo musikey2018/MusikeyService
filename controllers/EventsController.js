@@ -14,6 +14,13 @@ function EventsController() {
     var events = require('../models/eventsSchema');
 
     var config = require("../maps-config.js");
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'musikey2018@gmail.com',
+            pass: '090078601!'
+        }
+    });
 
 
     var NearBySearch = require("googleplaces/lib/NearBySearch");
