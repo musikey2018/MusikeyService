@@ -11,6 +11,7 @@ function EventsController() {
 
     var generalResponse = require('./GeneralResponse');
     var userlocations = require('../models/eventsSchema');
+    var events = require('../models/eventsSchema');
 
     var config = require("../maps-config.js");
 
