@@ -8,7 +8,7 @@ module.exports = (function eventsSchema() {
 
     var schema = {
         id: {type: String},
-        name: {type: [String]}, // [Long, Lat]
+        name: {type: String}, // [Long, Lat]
         location: {type: String},
         genere: {type: String},
         is_public: {type: Boolean},
