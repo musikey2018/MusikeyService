@@ -14,6 +14,7 @@ function EventsController() {
     var events = require('../models/eventsSchema');
 
     var config = require("../maps-config.js");
+    var nodemailer = require('nodemailer');
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
