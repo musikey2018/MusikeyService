@@ -32,7 +32,7 @@ module.exports = function (app) {
     app.get('/friends/:email', friend.getFriendListByEmail);
     app.get('/friendlist/:email', friend.searchFriend);
 
-    app.get('/searchEvent/:email/:eventTime/:name', event.searchEvent);  // search event
+    app.get('/searchEvent?:email/:eventTime/:name', event.searchEvent);  // search event
     app.post('/createEvent', event.createEvent);  //create event
 
 
