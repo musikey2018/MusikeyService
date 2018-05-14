@@ -133,11 +133,11 @@ function EventsController() {
         try {
 
             console.log(req.params);
-            var locationCoords = req.params.eventLocation.split(',');
+            var locationCoords = req.params.eventLocation.split(',').map(Number);;
             console.log(locationCoords);
             //return res.send(generalResponse.sendSuccessResponse("Event creation Was successful", 200, result));
             events.find({creator: req.params.email, date: req.params.eventDate, time: req.params.eventTime, location: {type: "Point", coordinates: locationCoords} , city: req.params.eventCity}, function (err, result) {
-
+                console.log('some thing is done');
                 if (result.length > 0) {
                     return res.send(generalResponse.sendFailureResponse("there is an another event already registered for same time and location", 400, result));
                 }
