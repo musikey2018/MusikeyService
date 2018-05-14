@@ -136,7 +136,7 @@ function EventsController() {
             var locationCoords = req.params.eventLocation.split(',').map(Number);;
             console.log(locationCoords);
             //return res.send(generalResponse.sendSuccessResponse("Event creation Was successful", 200, result));
-            events.find({creator: req.params.email, date: new Date(Date.parse(req.params.eventDate)), time: req.params.eventTime, location: {type: "Point", coordinates: locationCoords} , city: req.params.eventCity}, function (err, result) {
+            events.find({creator: req.params.email, date: Date.parse(req.params.eventDate), time: req.params.eventTime, location: {type: "Point", coordinates: locationCoords} , city: req.params.eventCity}, function (err, result) {
                 console.log('some thing is done');
                 if (typeof result != 'undefined' && result.length > 0) {
                     return res.send(generalResponse.sendFailureResponse("there is an another event already registered for same time and location", 400, result));
@@ -151,7 +151,7 @@ function EventsController() {
                         is_public: parameters.is_public,
                         is_expired: false,
                         time: parameters.eventTime,
-                        date: new Date(Date.parse(parameters.eventDate)),
+                        date: Date.parse(parameters.eventDate),
                         city: parameters.eventCity,
                         creator: parameters.email
                     };
