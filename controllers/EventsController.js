@@ -134,7 +134,7 @@ function EventsController() {
 
             console.log(req.params);
             var locationCoords = req.params.eventLocation.split(',').map(Number);
-            var eventDate = Date.parse(req.params.eventDate).map(Number);
+            var eventDate = Date.parse(req.params.eventDate);
             console.log(locationCoords);
             console.log(typeof eventDate);
             console.log(eventDate);
