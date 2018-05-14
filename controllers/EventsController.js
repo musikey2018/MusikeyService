@@ -132,7 +132,7 @@ function EventsController() {
     that.createEvent = function (req, res, next) {
         try {
 
-            console.log(req);
+            console.log(req.params);
             //return res.send(generalResponse.sendSuccessResponse("Event creation Was successful", 200, result));
             events.find({creator: req.params.email, date: req.params.eventDate, time: req.params.eventTime, location: req.params.eventLocation, city: req.params.eventCity}, function (err, result) {
 
