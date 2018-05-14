@@ -11,7 +11,7 @@ module.exports = (function eventsSchema() {
         name: {type: String}, // [Long, Lat]
         location: {
             type:{type: String},
-            coordinates: []
+            coordinates: [Number]
         },
         genere: {type: String},
         is_public: {type: Boolean},
