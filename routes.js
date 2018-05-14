@@ -36,10 +36,10 @@ module.exports = function (app) {
     app.post('/createEvent', event.createEvent);  //create event
     app.post('/joinEvent', event.joinEvent);  //join event
 
-    app.get('/searchEvent?:name', event.searchEventbyName);  // search event by name
-    app.get('/searchEvent?:eventCity', event.searchEventByCity);  // search event by city
-    app.get('/searchEvent?:email', event.searchEventByUser);  // search event by creator email
-    app.get('/searchEvent?:eventStartDate/:eventEndDate', event.searchEventbyDateRange);  // search event by date range
+    app.get('/searchEventbyName?:name', event.searchEventbyName);  // search event by name
+    app.get('/searchEventByCity?:eventCity', event.searchEventByCity);  // search event by city
+    app.get('/searchEventByUser?:email', event.searchEventByUser);  // search event by creator email
+    app.get('/searchEventbyDateRange?:eventStartDate/:eventEndDate', event.searchEventbyDateRange);  // search event by date range
     
 
 
