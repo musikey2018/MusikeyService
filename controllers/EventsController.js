@@ -151,7 +151,7 @@ function EventsController() {
                         is_public: parameters.is_public,
                         is_expired: false,
                         time: parameters.eventTime,
-                        date: parameters.eventDate,
+                        date: new Date(parameters.eventDate),
                         city: parameters.eventCity,
                         creator: parameters.email
                     };
