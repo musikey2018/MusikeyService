@@ -112,7 +112,7 @@ function EventsController() {
             events.find({name: req.params.name}, function (err, result) {
 
                 if (typeof result != 'undefined' && result.length > 0) {
-                    return res.send(generalResponse.sendSuccessResponse("event found with name" +req.params.name, 200, result));
+                    return res.send(generalResponse.sendSuccessResponse("event found with name:" +req.params.name, 200, result));
                 }
                 else {
                     return res.send(generalResponse.sendFailureResponse("there is no such event", 400, result));
@@ -136,7 +136,7 @@ function EventsController() {
             events.find({creator: req.params.email}, function (err, result) {
 
                 if (typeof result != 'undefined' && result.length > 0) {
-                    return res.send(generalResponse.sendSuccessResponse("event found with name" +req.params.name, 200, result));
+                    return res.send(generalResponse.sendSuccessResponse("event found with creator" +req.params.email, 200, result));
                 }
                 else {
                     return res.send(generalResponse.sendFailureResponse("there is no such event", 400, result));
@@ -160,7 +160,7 @@ function EventsController() {
             events.find({ city: req.params.eventCity}, function (err, result) {
 
                 if (typeof result != 'undefined' && result.length > 0) {
-                    return res.send(generalResponse.sendSuccessResponse("event found with name" +req.params.name, 200, result));
+                    return res.send(generalResponse.sendSuccessResponse("event found with city:" +req.params.eventCity, 200, result));
                 }
                 else {
                     return res.send(generalResponse.sendFailureResponse("there is no such event", 400, result));
@@ -186,7 +186,7 @@ function EventsController() {
             events.find({date: { $gte: eventStartDate, $lte: eventEndDate  } } , function (err, result) {
 
                 if (typeof result != 'undefined' && result.length > 0) {
-                    return res.send(generalResponse.sendSuccessResponse("event found with name" +req.params.name, 200, result));
+                    return res.send(generalResponse.sendSuccessResponse("event found within date range" +eventStartDate +  ' - '+ eventEndDate, 200, result));
                 }
                 else {
                     return res.send(generalResponse.sendFailureResponse("there is no such event", 400, result));
