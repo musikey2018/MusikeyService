@@ -138,7 +138,7 @@ function EventsController() {
             //return res.send(generalResponse.sendSuccessResponse("Event creation Was successful", 200, result));
             events.find({creator: req.params.email, date: req.params.eventDate, time: req.params.eventTime, location: {type: "Point", coordinates: locationCoords} , city: req.params.eventCity}, function (err, result) {
                 console.log('some thing is done');
-                if (result.length > 0) {
+                if (typeof result != 'undefined' && result.length > 0) {
                     return res.send(generalResponse.sendFailureResponse("there is an another event already registered for same time and location", 400, result));
                 }
                 else {
