@@ -111,7 +111,7 @@ function EventsController() {
             console.log(req.params);
             events.find({creator: req.params.email, timing: req.params.eventTime, name: req.params.name}, function (err, result) {
 
-                if (result.length > 0) {
+                if (typeof result != 'undefined' && result.length > 0) {
                     return res.send(generalResponse.sendSuccessResponse("event found with name" +req.params.name, 200, result));
                 }
                 else {
