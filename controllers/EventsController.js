@@ -105,11 +105,85 @@ function EventsController() {
     };
 
      // search event by name
-     that.searchEvent = function (req, res, next) {
+     that.searchEventbyName = function (req, res, next) {
         try {
 
             console.log(req.params);
-            events.find({creator: req.params.email, time: req.params.eventTime, name: req.params.name}, function (err, result) {
+            events.find({name: req.params.name}, function (err, result) {
+
+                if (typeof result != 'undefined' && result.length > 0) {
+                    return res.send(generalResponse.sendSuccessResponse("event found with name" +req.params.name, 200, result));
+                }
+                else {
+                    return res.send(generalResponse.sendFailureResponse("there is no such event", 400, result));
+                }
+            });
+            return next();
+
+
+        }
+        catch (ex) {
+            console.log("Exception:" + ex);
+            return res.send(generalResponse.sendFailureResponse("/searchEvent:Exception Occured", 400, ex));
+        }
+    };
+
+    // search event by email
+    that.searchEventByUser = function (req, res, next) {
+        try {
+
+            console.log(req.params);
+            events.find({creator: req.params.email}, function (err, result) {
+
+                if (typeof result != 'undefined' && result.length > 0) {
+                    return res.send(generalResponse.sendSuccessResponse("event found with name" +req.params.name, 200, result));
+                }
+                else {
+                    return res.send(generalResponse.sendFailureResponse("there is no such event", 400, result));
+                }
+            });
+            return next();
+
+
+        }
+        catch (ex) {
+            console.log("Exception:" + ex);
+            return res.send(generalResponse.sendFailureResponse("/searchEvent:Exception Occured", 400, ex));
+        }
+    };
+
+    // search event by place
+    that.searchEventByCity = function (req, res, next) {
+        try {
+
+            console.log(req.params);
+            events.find({ city: req.params.eventCity}, function (err, result) {
+
+                if (typeof result != 'undefined' && result.length > 0) {
+                    return res.send(generalResponse.sendSuccessResponse("event found with name" +req.params.name, 200, result));
+                }
+                else {
+                    return res.send(generalResponse.sendFailureResponse("there is no such event", 400, result));
+                }
+            });
+            return next();
+
+
+        }
+        catch (ex) {
+            console.log("Exception:" + ex);
+            return res.send(generalResponse.sendFailureResponse("/searchEvent:Exception Occured", 400, ex));
+        }
+    };
+
+    // search event by name
+    that.searchEventbyDateRange = function (req, res, next) {
+        try {
+
+            console.log(req.params);
+            var eventStartDate = Date.parse(req.params.eventStartDate);
+            var eventEndDate = Date.parse(req.params.eventEndDate);
+            events.find({date: { $gte: eventStartDate, $lte: eventEndDate  } } , function (err, result) {
 
                 if (typeof result != 'undefined' && result.length > 0) {
                     return res.send(generalResponse.sendSuccessResponse("event found with name" +req.params.name, 200, result));

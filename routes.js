@@ -32,9 +32,14 @@ module.exports = function (app) {
     app.get('/friends/:email', friend.getFriendListByEmail);
     app.get('/friendlist/:email', friend.searchFriend);
 
-    app.get('/searchEvent?:email/:eventTime/:name', event.searchEvent);  // search event
+    
     app.post('/createEvent', event.createEvent);  //create event
     app.post('/joinEvent', event.joinEvent);  //join event
+
+    app.get('/searchEvent?:name', event.searchEventbyName);  // search event by name
+    app.get('/searchEvent?:eventCity', event.searchEventByCity);  // search event by city
+    app.get('/searchEvent?:email', event.searchEventByUser);  // search event by creator email
+    app.get('/searchEvent?:eventStartDate/:eventEndDate', event.searchEventbyDateRange);  // search event by date range
     
 
 
