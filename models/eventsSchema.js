@@ -22,7 +22,7 @@ module.exports = (function eventsSchema() {
         city: {type: String},
         creator: {type: String}
     };
-    schema.index({location: '2dsphere'});
+    schema.createIndex({location: '2dsphere'});
 
     var collectionName = 'events';
     var eventsSchema = mongoose.Schema(schema);
