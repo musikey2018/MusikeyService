@@ -9,15 +9,20 @@ module.exports = (function eventsSchema() {
     var schema = {
         id: {type: String},
         name: {type: String}, // [Long, Lat]
-        location: {type: String},
+        location: {
+            type:{type: String},
+            coordinates: []
+        },
         genere: {type: String},
         is_public: {type: Boolean},
         is_expired: {type: String},
-        timing: {type: String},
+        time: {type: String},
+        date: {type: Date},
         participants: {type: [String]},
-        place_id: {type: String},
+        city: {type: String},
         creator: {type: String}
     };
+    schema.index({location: '2dsphere'});
 
     var collectionName = 'events';
     var eventsSchema = mongoose.Schema(schema);
