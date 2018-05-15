@@ -325,6 +325,31 @@ function EventsController() {
             return res.send(generalResponse.sendFailureResponse("/joinEvent:Exception Occured", 400, ex));
         }
     };
+
+    // add participant
+    that.joinEventById = function (req, res, next) {
+        try {
+
+            console.log(req.params);
+            events.findOneAndUpdate({_id:req.params.eventId},{ $push: { participants:req.params.email}},{$inc : {participantsCount : 1}}, { new: true }, function (err, eventDoc) {
+                console.log('updated event');
+                console.log(eventDoc);
+                if (err) {
+                    console.log(err);
+                    return res.send(generalResponse.sendFailureResponse("Error Occured While registering fot e an event", 400, err));
+                }
+                return res.send(generalResponse.sendSuccessResponse("you are registered for event successfully", 200, eventDoc));
+            });
+            return next();
+
+
+        }
+        catch (ex) {
+            console.log("Exception:" + ex);
+            return res.send(generalResponse.sendFailureResponse("/joinEvent:Exception Occured", 400, ex));
+        }
+    };
+
     return that;
 
 };
