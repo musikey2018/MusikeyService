@@ -40,6 +40,7 @@ module.exports = function (app) {
     app.get('/searchEventByCity?:eventCity', event.searchEventByCity);  // search event by city
     app.get('/searchEventByUser?:email', event.searchEventByUser);  // search event by creator email
     app.get('/searchEventbyDateRange?:eventStartDate/:eventEndDate', event.searchEventbyDateRange);  // search event by date range
+    app.get('/searchEventNearBy?:userlocation', event.searchEventNearBy);  // search event by location near by 5km
     
 
 
