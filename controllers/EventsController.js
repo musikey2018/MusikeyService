@@ -208,8 +208,9 @@ function EventsController() {
 
             console.log(req.params);
             var userlocation = req.params.userlocation.split(',').map(Number);
-            
-            events.find({location: { $nearSphere: {$geometry: {type : "Point", coordinates : [userlocation] }, $minDistance: 1, $maxDistance: 5000} }}, function (err, result) { 
+            console.log(userlocation);
+
+            events.find({location: { $nearSphere: {$geometry: {type : "Point", coordinates : [userlocation] }, $minDistance: 0, $maxDistance: 5000} }}, function (err, result) { 
                 if (typeof result != 'undefined' && result.length > 0) {
                     return res.send(generalResponse.sendSuccessResponse("event found within cordinates " +eventStartDate +  ' range of 1-5km', 200, result));
                 }
