@@ -8,10 +8,10 @@ module.exports = (function eventsSchema() {
 
     var schema = {
         id: {type: String},
-        name: {type: String}, // [Long, Lat]
+        name: {type: String}, 
         location: {
             type:{type: String},
-            coordinates: [Number]
+            coordinates: [Number]  // [Long, Lat]
         },
         genere: {type: String},
         is_public: {type: Boolean},
@@ -19,8 +19,10 @@ module.exports = (function eventsSchema() {
         time: {type: String},
         date: {type: Date},
         participants: {type: [String]},
+        participantsCount: {type: String},
         city: {type: String},
-        creator: {type: String}
+        creator: {type: String},
+        votes: {type: Number, default:0}
     };
     
 

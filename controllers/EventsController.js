@@ -260,7 +260,8 @@ function EventsController() {
                         time: parameters.eventTime,
                         date: eventDate,
                         city: parameters.eventCity,
-                        creator: parameters.email
+                        creator: parameters.email,
+                        participantsCount : 1
                     };
 
                     events.create(
@@ -306,7 +307,7 @@ function EventsController() {
         try {
 
             console.log(req.params);
-            events.findOneAndUpdate({timing: req.params.eventTime, location: req.params.eventLocation},{ $push: { participants:req.params.email}}, { new: true }, function (err, eventDoc) {
+            events.findOneAndUpdate({timing: req.params.eventTime, location: req.params.eventLocation},{ $push: { participants:req.params.email}},{$inc : {participantsCount : 1}}, { new: true }, function (err, eventDoc) {
                 console.log('updated event');
                 console.log(eventDoc);
                 if (err) {
