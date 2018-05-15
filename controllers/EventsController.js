@@ -124,7 +124,7 @@ function EventsController() {
         }
         catch (ex) {
             console.log("Exception:" + ex);
-            return res.send(generalResponse.sendFailureResponse("/searchEvent:Exception Occured", 400, ex));
+            return res.send(generalResponse.sendFailureResponse("/searchEventbyName:Exception Occured", 400, ex));
         }
     };
 
@@ -148,7 +148,7 @@ function EventsController() {
         }
         catch (ex) {
             console.log("Exception:" + ex);
-            return res.send(generalResponse.sendFailureResponse("/searchEvent:Exception Occured", 400, ex));
+            return res.send(generalResponse.sendFailureResponse("/searchEventByUser:Exception Occured", 400, ex));
         }
     };
 
@@ -172,7 +172,7 @@ function EventsController() {
         }
         catch (ex) {
             console.log("Exception:" + ex);
-            return res.send(generalResponse.sendFailureResponse("/searchEvent:Exception Occured", 400, ex));
+            return res.send(generalResponse.sendFailureResponse("/searchEventByCity:Exception Occured", 400, ex));
         }
     };
 
@@ -198,9 +198,35 @@ function EventsController() {
         }
         catch (ex) {
             console.log("Exception:" + ex);
-            return res.send(generalResponse.sendFailureResponse("/searchEvent:Exception Occured", 400, ex));
+            return res.send(generalResponse.sendFailureResponse("/searchEventbyDateRange:Exception Occured", 400, ex));
         }
     };
+
+    // search event by near by 5km
+    that.searchEventNearBy = function (req, res, next) {
+        try {
+
+            console.log(req.params);
+            var userlocation = req.params.userlocation.split(',').map(Number);
+            
+            events.find({location: { $nearSphere: {$geometry: {type : "Point", coordinates : [userlocation] }, $minDistance: 1, $maxDistance: 5000} }}, function (err, result) { 
+                if (typeof result != 'undefined' && result.length > 0) {
+                    return res.send(generalResponse.sendSuccessResponse("event found within cordinates " +eventStartDate +  ' range of 1-5km', 200, result));
+                }
+                else {
+                    return res.send(generalResponse.sendFailureResponse("there are no events near by", 400, result));
+                }
+            });
+            return next();
+
+
+        }
+        catch (ex) {
+            console.log("Exception:" + ex);
+            return res.send(generalResponse.sendFailureResponse("/searchEventNearBy:Exception Occured", 400, ex));
+        }
+    };
+
 
     // Create new event
     that.createEvent = function (req, res, next) {
