@@ -35,7 +35,7 @@ module.exports = function (app) {
     
     app.post('/createEvent', event.createEvent);  //create event
     app.post('/joinEvent', event.joinEvent);  //join event by location and time
-    app.post('/joinEvent', event.joinEventById); // join event by id
+    app.post('/joinEventById', event.joinEventById); // join event by id
 
     app.get('/searchEventbyName?:name', event.searchEventbyName);  // search event by name
     app.get('/searchEventByCity?:eventCity', event.searchEventByCity);  // search event by city
