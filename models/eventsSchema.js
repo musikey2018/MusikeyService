@@ -19,7 +19,7 @@ module.exports = (function eventsSchema() {
         time: {type: String},
         date: {type: Date},
         participants: {type: [String]},
-        participantsCount: {type: String},
+        participantsCount: {type: Number},
         city: {type: String},
         creator: {type: String},
         votes: {type: Number, default:0}
