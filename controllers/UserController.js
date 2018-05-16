@@ -153,7 +153,9 @@ function usersController() {
             if (err)
                 return res.send(generalResponse.sendFailureResponse("getUserByEmail: Error Occured", 400, error));
             else {
-                return res.send(generalResponse.sendSuccessResponse("getUserByEmail: Successful", 200, data));
+                if(data!= null)
+                    return res.send(generalResponse.sendSuccessResponse("getUserByEmail: Successful", 200, data));
+                return res.send(generalResponse.sendFailureResponse("getUserByEmail: No user found", 400, data));
             }
         });
         return next();
