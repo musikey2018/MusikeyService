@@ -15,7 +15,7 @@ module.exports = (function eventsSchema() {
         },
         genere: {type: String},
         is_public: {type: Boolean},
-        is_expired: {type: String},
+        is_expired: {type: Boolean},
         time: {type: String},
         date: {type: Date},
         participants: {type: [String]},
