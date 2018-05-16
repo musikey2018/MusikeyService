@@ -331,7 +331,7 @@ function EventsController() {
         try {
 
             console.log(req.params);
-            events.findByIdAndUpdate(req.params.eventId,{ $push: { participants:req.params.email}},{$inc : {participantsCount : 1}}, { new: 'true' }, function (err, eventDoc) {
+            events.findByIdAndUpdate(req.params.eventId,{ $push: { participants:req.params.email},$inc : {participantsCount : 1}},{ new: 'true' }, function (err, eventDoc) {
                 console.log('updated event');
                 console.log(eventDoc);
                 if (err) {
