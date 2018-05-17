@@ -12,6 +12,7 @@ function EventsController() {
     var generalResponse = require('./GeneralResponse');
     var userlocations = require('../models/eventsSchema');
     var events = require('../models/eventsSchema');
+    var users = require('../models/eventsSchema');
 
     var config = require("../maps-config.js");
     var nodemailer = require('nodemailer');
@@ -348,6 +349,44 @@ function EventsController() {
             console.log("Exception:" + ex);
             return res.send(generalResponse.sendFailureResponse("/joinEvent:Exception Occured", 400, ex));
         }
+    };
+
+    // events joined by friends
+    that.getEventsFriendsParticipated = function (req, res, next) {
+        
+        console.log('get event list particiated by friends'+ req.params);
+        var friendList = [];
+        var userEmails=[];
+        users.findOne({email: req.params.email}, function (err, data) {
+            if (err) {
+                return next(err);
+            }
+            else if (data!=null) {
+                console.log('user record found:'+ data);
+
+                events.find({ "participants"    : { "$in": data.friends }}, function (err, result) {
+
+
+                    if (err)
+                        return res.send(generalResponse.sendFailureResponse("Error Occured while fetching friends' events", 400, error));
+                    else if (result) {
+                        console.log("usercontroller().addFriend() =>user", result)
+                        return res.send(generalResponse.sendSuccessResponse("Events fetched successfuly!", 200, result));
+                    }
+                    else {
+                        return res.send(generalResponse.sendFailureResponse("Error Occured : No event found", 400, null));
+                    }
+
+                });
+            }
+
+            else{
+                return res.send(generalResponse.sendFailureResponse("no user registered with given email", 200, null));
+            }
+
+        });
+
+        next();
     };
 
     return that;
