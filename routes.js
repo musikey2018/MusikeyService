@@ -43,7 +43,7 @@ module.exports = function (app) {
     app.get('/searchEventbyDateRange?:eventStartDate/:eventEndDate', event.searchEventbyDateRange);  // search event by date range
     app.get('/searchEventNearBy?:userlocation', event.searchEventNearBy);  // search event by location near by 5km
     
-    app.get('/searchFriendsEvents?:userlocation', event.getEventsFriendsParticipated);  // search events in which friends have participated
+    app.get('/searchFriendsEvents?:email', event.getEventsFriendsParticipated);  // search events in which friends have participated
 
 
 };
