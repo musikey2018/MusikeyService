@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+  <title>Pusher Test</title>
+  <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('01f6cc2ed8d1b755871c', {
+      cluster: 'eu',
+      encrypted: true
+    });
+
+    var channel = pusher.subscribe('vote_update');
+    channel.bind('vote5afe63482760547c57c5a038', function(data) {
+      alert(data);
+      console.log(data)
+    });
+  </script>
+</head>
