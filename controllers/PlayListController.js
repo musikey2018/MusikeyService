@@ -81,7 +81,7 @@ function PlayListController() {
             console.log(req.params);
            
             var eventId = req.params.eventId;
-            var newSong = req.params.newSong;
+            var newSong = { 'name':req.params.newSong}
            
             console.log(req.params);
 
