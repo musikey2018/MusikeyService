@@ -362,7 +362,7 @@ function EventsController() {
                 return next(err);
             }
             else if (data!=null) {
-                console.log('user record found:'+ data);
+                console.log('user record found:'+ data.friends);
 
                 events.find({ "participants"    : { "$in": data.friends }}, function (err, result) {
 
