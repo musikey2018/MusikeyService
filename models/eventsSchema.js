@@ -25,7 +25,7 @@ module.exports = (function eventsSchema() {
         city: {type: String},
         creator: {type: String},
         votes: {type: Number, default:0},
-        playlist: {type: any}
+        playlist: {}
     };
     
 
