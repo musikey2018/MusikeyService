@@ -4,6 +4,7 @@ module.exports = function (app) {
     var fileController = require('./controllers/FileController');
     var friend = require('./controllers/FriendController');
     var event = require('./controllers/EventsController');
+    var playlist = require('./controllers/PlayListController');
 
 
 
@@ -50,9 +51,9 @@ module.exports = function (app) {
     app.post('/inviteForEvent', event.inviteForEvent); // invite for event (eventid, email)
 
     /// playlist based routes
-    app.post('/createEventPlaylist', event.createEventPlaylist); // create playlist for event
-    app.post('/addNewSongInPlaylist', event.addNewSongInPlaylist); // add new song to playlist for event
-    app.post('/incrementSongVote', event.incrementSongVote); // increment vote for next song
+    app.post('/createEventPlaylist', playlist.createEventPlaylist); // create playlist for event
+    app.post('/addNewSongInPlaylist', playlist.addNewSongInPlaylist); // add new song to playlist for event
+    app.post('/incrementSongVote', playlist.incrementSongVote); // increment vote for next song
 
 
 
