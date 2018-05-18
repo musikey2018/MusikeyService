@@ -50,16 +50,16 @@ function PlayListController() {
                     return res.send(generalResponse.sendFailureResponse("Error Occured While update for event playlist", 400, err));
                 }
 
-                events.findByIdAndUpdate(req.params.eventId,{ 'playlist': eventDoc} ,{ new: 'true' }, function (err, eventDoc) {
-                    console.log('updated event');
-                    console.log(eventDoc);
-                    if (err) {
-                        console.log(err);
-                        return res.send(generalResponse.sendFailureResponse("Error Occured  While update for event playlist", 400, err));
-                    }
+                // events.findByIdAndUpdate(req.params.eventId,{ 'playlist': eventDoc} ,{ new: 'true' }, function (err, eventDoc) {
+                //     console.log('updated event');
+                //     console.log(eventDoc);
+                //     if (err) {
+                //         console.log(err);
+                //         return res.send(generalResponse.sendFailureResponse("Error Occured  While update for event playlist", 400, err));
+                //     }
                    
-                    return res.send(generalResponse.sendSuccessResponse("update event  with new playlist successfully", 200, eventDoc));
-                });
+                //     return res.send(generalResponse.sendSuccessResponse("update event  with new playlist successfully", 200, eventDoc));
+                // });
                 return res.send(generalResponse.sendSuccessResponse("playlist updated successfully", 200, eventDoc));
             });
 
