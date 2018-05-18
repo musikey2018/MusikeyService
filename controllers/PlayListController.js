@@ -24,7 +24,7 @@ function PlayListController() {
            
             var eventId = req.params.eventId;
             var playlistName = req.params.playlistName;
-            var playlistSongs = req.params.playlistSongs;
+            var playlistSongs = req.params.playlistSongs.split(',');
 
             eventPlaylist  = new playlist({
                 'eventId': eventId,
