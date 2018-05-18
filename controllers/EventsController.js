@@ -313,7 +313,7 @@ function EventsController() {
                 console.log(eventDoc);
                 if (err) {
                     console.log(err);
-                    return res.send(generalResponse.sendFailureResponse("Error Occured While registering fot e an event", 400, err));
+                    return res.send(generalResponse.sendFailureResponse("Error Occured While registering for event", 400, err));
                 }
                 return res.send(generalResponse.sendSuccessResponse("you are registered for event successfully", 200, eventDoc));
             });
@@ -337,7 +337,7 @@ function EventsController() {
                 console.log(eventDoc);
                 if (err) {
                     console.log(err);
-                    return res.send(generalResponse.sendFailureResponse("Error Occured While registering fot e an event", 400, err));
+                    return res.send(generalResponse.sendFailureResponse("Error Occured While registering for event", 400, err));
                 }
                 return res.send(generalResponse.sendSuccessResponse("you are registered for event successfully", 200, eventDoc));
             });
@@ -347,7 +347,7 @@ function EventsController() {
         }
         catch (ex) {
             console.log("Exception:" + ex);
-            return res.send(generalResponse.sendFailureResponse("/joinEvent:Exception Occured", 400, ex));
+            return res.send(generalResponse.sendFailureResponse("/joinEventById:Exception Occured", 400, ex));
         }
     };
 
@@ -387,6 +387,31 @@ function EventsController() {
         });
 
         next();
+    };
+
+
+    // invite for event participation
+    that.inviteForEvent = function (req, res, next) {
+        try {
+
+            console.log(req.params);
+            events.findByIdAndUpdate(req.params.eventId,{ $push: { invitedParticipants:req.params.email},$inc : {invitedParticipantsCount : 1}},{ new: 'true' }, function (err, eventDoc) {
+                console.log('updated event');
+                console.log(eventDoc);
+                if (err) {
+                    console.log(err);
+                    return res.send(generalResponse.sendFailureResponse("Error Occured While sending invitition for an event", 400, err));
+                }
+                return res.send(generalResponse.sendSuccessResponse("invitition for event successful", 200, eventDoc));
+            });
+            return next();
+
+
+        }
+        catch (ex) {
+            console.log("Exception:" + ex);
+            return res.send(generalResponse.sendFailureResponse("/inviteForEvent:Exception Occured", 400, ex));
+        }
     };
 
     return that;

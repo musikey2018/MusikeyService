@@ -44,6 +44,7 @@ module.exports = function (app) {
     app.get('/searchEventNearBy?:userlocation', event.searchEventNearBy);  // search event by location near by 5km
     
     app.get('/searchFriendsEvents?:email', event.getEventsFriendsParticipated);  // search events in which friends have participated
+    app.post('/inviteForEvent', event.inviteForEvent); // invite for event (eventid, email)
 
 
 };

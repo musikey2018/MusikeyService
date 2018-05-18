@@ -20,6 +20,8 @@ module.exports = (function eventsSchema() {
         date: {type: Date},
         participants: {type: [String]},
         participantsCount: {type: Number, default:1},
+        invitedParticipants: {type: [String]},
+        invitedParticipantsCount: {type: Number, default:0},
         city: {type: String},
         creator: {type: String},
         votes: {type: Number, default:0}
