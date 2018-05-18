@@ -33,7 +33,7 @@ function PlayListController() {
             });
             console.log(req.params);
 
-            playlist.findOneAndUpdate({'eventId':req.params.eventId},{'eventId':req.params.eventId, 'name': playlistName, 'songs': playlistSongst} ,{ new: 'true', upsert:'true' }, function (err, eventDoc) {
+            playlist.findOneAndUpdate({'eventId':req.params.eventId},{'eventId':req.params.eventId, 'name': playlistName, 'songs': playlistSongs} ,{ new: 'true', upsert:'true' }, function (err, eventDoc) {
                 console.log('updated event playlist');
                 console.log(eventDoc);
                 if (err) {
@@ -41,16 +41,16 @@ function PlayListController() {
                     return res.send(generalResponse.sendFailureResponse("Error Occured While update for event playlist", 400, err));
                 }
 
-                // events.findByIdAndUpdate(req.params.eventId,{ 'playlist': eventDoc} ,{ new: 'true' }, function (err, eventDoc) {
-                //     console.log('updated event');
-                //     console.log(eventDoc);
-                //     if (err) {
-                //         console.log(err);
-                //         return res.send(generalResponse.sendFailureResponse("Error Occured  While update for event playlist", 400, err));
-                //     }
+                events.findByIdAndUpdate(req.params.eventId,{ 'playlist': eventDoc} ,{ new: 'true' }, function (err, eventDoc) {
+                    console.log('updated event');
+                    console.log(eventDoc);
+                    if (err) {
+                        console.log(err);
+                        return res.send(generalResponse.sendFailureResponse("Error Occured  While update for event playlist", 400, err));
+                    }
                    
-                //     return res.send(generalResponse.sendSuccessResponse("update event  with new playlist successfully", 200, eventDoc));
-                // });
+                    return res.send(generalResponse.sendSuccessResponse("update event  with new playlist successfully", 200, eventDoc));
+                });
                 return res.send(generalResponse.sendSuccessResponse("playlist updated successfully", 200, eventDoc));
             });
 
