@@ -13,9 +13,15 @@
     });
 
     var channel = pusher.subscribe('vote_update');
+    var channel2 = pusher.subscribe('vote_playlist_updateupdate');
     channel.bind('vote5afe63482760547c57c5a038', function(data) {
-      alert(data);
-      console.log(data)
+      alert('vote count updated'+ data.name);
+      //console.log(data)
+    });
+
+    channel2.bind('newSong-5afe63482760547c57c5a038', function(data) {
+      alert('new song is added to playlist'+ data.name);
+      //console.log(data)
     });
   </script>
 </head>

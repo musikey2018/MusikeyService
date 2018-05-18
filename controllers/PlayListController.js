@@ -94,6 +94,8 @@ function PlayListController() {
                     return res.send(generalResponse.sendFailureResponse("Error Occured While update for event playlist", 400, err));
                 }
 
+                pusher.trigger('playlist_update','newSong-'+eventDoc._id,eventDoc);
+
                 // events.findByIdAndUpdate(req.params.eventId,{ 'playlist': eventDoc} ,{ new: 'true' }, function (err, eventDoc) {
                 //     console.log('updated event');
                 //     console.log(eventDoc);
@@ -138,7 +140,7 @@ function PlayListController() {
                     return res.send(generalResponse.sendFailureResponse("Error Occured While update for event playlist", 400, err));
                 }
 
-                pusher.trigger('vote_update','vote'+eventDoc._id,eventDoc);
+                pusher.trigger('vote_update','vote-'+eventDoc._id,eventDoc);
 
                 // events.findByIdAndUpdate(req.params.eventId,{ 'playlist': eventDoc} ,{ new: 'true' }, function (err, eventDoc) {
                 //     console.log('updated event');
