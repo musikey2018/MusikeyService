@@ -14,7 +14,7 @@ function PlayListController() {
     var users = require('../models/musikeyUserSchema');
     var playlist = require('../models/playlistSchema');
 
-    var transporter = require('transporter');
+    var transporter = require('./EmailController');
 
     // Create new playlist
     that.createEventPlaylist = function (req, res, next) {
