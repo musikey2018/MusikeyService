@@ -1,4 +1,7 @@
-// Model for the users
+/**
+ * Created by Bilawal Aziz on 24.04.18.
+ * Model for musikey user
+ */
 module.exports = (function musikeyUserSchema () {
 
 	var mongoose = require('../db').mongoose;

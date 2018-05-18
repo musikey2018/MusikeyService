@@ -1,3 +1,4 @@
+require('dotenv').config();
 var restify = require('restify');
 var config = require('./config');
 var app = restify.createServer({name:'musikey'});
