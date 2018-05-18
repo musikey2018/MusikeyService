@@ -13,6 +13,7 @@ function PlayListController() {
     var events = require('../models/eventsSchema');
     var users = require('../models/musikeyUserSchema');
     var playlist = require('../models/playlistSchema');
+    var pusher = require('./PusherController');
 
     var transporter = require('./EmailController');
 
@@ -136,6 +137,8 @@ function PlayListController() {
                     console.log(err);
                     return res.send(generalResponse.sendFailureResponse("Error Occured While update for event playlist", 400, err));
                 }
+
+                pusher.trigger('vote_update','vote'+eventDoc._id,eventDoc);
 
                 // events.findByIdAndUpdate(req.params.eventId,{ 'playlist': eventDoc} ,{ new: 'true' }, function (err, eventDoc) {
                 //     console.log('updated event');
