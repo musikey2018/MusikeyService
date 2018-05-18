@@ -34,15 +34,15 @@ function ImagesController() {
 
     that.uploadImage = function (req, res, next) {
 
-        var useremail = req.body.email;
-        var eventId =  req.body.eventId;
-        var imageData = req.body.imageData;
+        var useremail = req.params.email;
+        var eventId =  req.params.eventId;
+        var imageData = req.params.imageData;
 
         console.log("ImagesController.upload() email request ", useremail);
         console.log("ImagesController.upload() eventId ", eventId);
         console.log("ImagesController.upload() image data  ", imageData);
         
-        //"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+        //imageData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
         cloudinary.v2.uploader.upload(imageData, function(error, uploadedImage) {
             if (error) {
                 console.log("ImagesController.upload() error ocurred", error);
