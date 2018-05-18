@@ -38,7 +38,6 @@ module.exports = (function imagesSchema() {
 
     var collectionName = 'images';
     var imagesSchema = mongoose.Schema(schema);
-    imagesSchema.index({location: '2dsphere'});
     var images = mongoose.model(collectionName, imagesSchema);
 
 

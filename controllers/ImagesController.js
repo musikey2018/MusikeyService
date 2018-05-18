@@ -48,7 +48,7 @@ function ImagesController() {
                 console.log("ImagesController.upload() error ocurred", error);
                 return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, null));
             } else {
-                if('undefined'!= uploadedImage  && null != uploadedImage) {
+                if('undefined' != uploadedImage  && null != uploadedImage) {
                     console.log('image is uploaded on cloud saving in database');
                     console.log(uploadedImage);
                     if(uploadedImage.url.length > 1 || uploadedImage.secure_url.length > 1) {
