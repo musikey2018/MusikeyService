@@ -27,12 +27,15 @@ module.exports = function (app) {
     app.post('/uploadImage', fileController.uploadImage);
     app.get('/download', fileController.download);
 
-    app.post('/addfriend', friend.addFriend);
+    // friend related routes
+    app.post('/addfriend', friend.addFriend);  // added friend
     app.post('/unfriend', friend.unFriend);
-    app.get('/friends/:email', friend.getFriendListByEmail);
-    app.get('/friendlist/:email', friend.searchFriend);
+    app.get('/friends/:email', friend.getFriendListByEmail); // get friend by email
+    app.get('/friendlist/:email', friend.searchFriend);  // get user friend list
 
     
+
+    /// event based routes
     app.post('/createEvent', event.createEvent);  //create event
     app.post('/joinEvent', event.joinEvent);  //join event by location and time
     app.post('/joinEventById', event.joinEventById); // join event by id
@@ -45,6 +48,13 @@ module.exports = function (app) {
     
     app.get('/searchFriendsEvents?:email', event.getEventsFriendsParticipated);  // search events in which friends have participated
     app.post('/inviteForEvent', event.inviteForEvent); // invite for event (eventid, email)
+
+    /// playlist based routes
+    app.post('/createEventPlaylist', event.createEventPlaylist); // create playlist for event
+    app.post('/addNewSongInPlaylist', event.addNewSongInPlaylist); // add new song to playlist for event
+    app.post('/incrementSongVote', event.incrementSongVote); // increment vote for next song
+
+
 
 
 };

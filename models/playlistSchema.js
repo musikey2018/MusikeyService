@@ -2,7 +2,7 @@
  * Created by Bilawal Aziz on 17.05.18.
  */
 
-module.exports = (function eventsSchema() {
+module.exports = (function playlistSchema() {
 
     var mongoose = require('../db').mongoose;
 
@@ -19,8 +19,8 @@ module.exports = (function eventsSchema() {
     
 
     var collectionName = 'playlists';
-    var playlistsSchema = mongoose.Schema(schema);
-    var playlists = mongoose.model(collectionName, playlistsSchema);
+    var playlistSchema = mongoose.Schema(schema);
+    var playlists = mongoose.model(collectionName, playlistSchema);
 
 
     return playlists;
