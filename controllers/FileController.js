@@ -12,9 +12,9 @@ function FileController() {
 
 
     cloudinary.config({
-        cloud_name: 'dsmd1d21f',
-        api_key: '653619854882521',
-        api_secret: 'dGA40Lvs8MSEN3Mefegs9OYmNuI'
+        cloud_name: 'musikey2018',
+        api_key: '985287485516564',
+        api_secret: 'LlCEcpwsdKLD7qYwbMNMhO4aSMM'
     });
 
     that.download = function (req, res, next) {
