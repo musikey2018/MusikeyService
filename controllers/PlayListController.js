@@ -25,6 +25,15 @@ function PlayListController() {
             var eventId = req.params.eventId;
             var playlistName = req.params.playlistName;
             var playlistSongs = req.params.playlistSongs.split(',');
+            var songs = [];
+            for(var i=0; i< playlistSongs.length; i++){
+                songs[i] = {
+                 name:playlistSongs[i],
+                 votes: 0
+                }
+            }
+
+            console.log(songs);
 
             eventPlaylist  = new playlist({
                 'eventId': eventId,
@@ -33,7 +42,7 @@ function PlayListController() {
             });
             console.log(req.params);
 
-            playlist.findOneAndUpdate({'eventId':req.params.eventId},{'eventId':req.params.eventId, 'name': playlistName, 'songs': playlistSongs} ,{ new: 'true', upsert:'true' }, function (err, eventDoc) {
+            playlist.findOneAndUpdate({'eventId':req.params.eventId},{'eventId':req.params.eventId, 'name': playlistName, 'songs': songs} ,{ new: 'true', upsert:'true' }, function (err, eventDoc) {
                 console.log('updated event playlist');
                 console.log(eventDoc);
                 if (err) {
