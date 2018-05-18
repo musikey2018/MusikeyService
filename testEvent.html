@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <title>Pusher Test</title>
+  <title>Get Push Events from Server</title>
   <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
   <script>
 
@@ -12,16 +12,16 @@
       encrypted: true
     });
 
-    var channel = pusher.subscribe('vote_update');
-    var channel2 = pusher.subscribe('vote_playlist_updateupdate');
-    channel.bind('vote5afe63482760547c57c5a038', function(data) {
+    var votingChannel = pusher.subscribe('vote_update');
+    var playlistChannel = pusher.subscribe('playlist_update');
+    votingChannel.bind('vote5afe63482760547c57c5a038', function(data) {
       alert('vote count updated'+ data.name);
-      //console.log(data)
+      
     });
 
-    channel2.bind('newSong-5afe63482760547c57c5a038', function(data) {
+    playlistChannel.bind('newSong-5afe63482760547c57c5a038', function(data) {
       alert('new song is added to playlist'+ data.name);
-      //console.log(data)
+      
     });
   </script>
 </head>
