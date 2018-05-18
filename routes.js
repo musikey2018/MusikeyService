@@ -1,7 +1,7 @@
 module.exports = function (app) {
     var user = require('./controllers/UserController');
     var location = require('./controllers/LocationController');
-    var fileController = require('./controllers/FileController');
+    var ImagesController = require('./controllers/ImagesController');
     var friend = require('./controllers/FriendController');
     var event = require('./controllers/EventsController');
     var playlist = require('./controllers/PlayListController');
@@ -25,8 +25,8 @@ module.exports = function (app) {
 
     app.get('/location', location.getLocation);  // Get Location
 
-    app.post('/uploadImage', fileController.uploadImage);
-    app.get('/download', fileController.download);
+    app.post('/uploadImage', ImagesController.uploadImage);
+    app.get('/download', ImagesController.download);
 
     // friend related routes
     app.post('/addfriend', friend.addFriend);  // added friend
