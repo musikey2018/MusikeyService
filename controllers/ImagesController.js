@@ -7,16 +7,12 @@ function ImagesController() {
     var that = this;
     var generalResponse = require('./GeneralResponse');
     var request = require('request').defaults({encoding: null});
-    var cloudinary = require('cloudinary');
+    var cloudinary = require('./CloudinaryController');
     var users = require('../models/musikeyUserSchema');
     var images = require('../models/imagesSchema');
 
 
-    cloudinary.config({
-        cloud_name: 'musikey2018',
-        api_key: '985287485516564',
-        api_secret: 'LlCEcpwsdKLD7qYwbMNMhO4aSMM'
-    });
+    
 
     that.download = function (req, res, next) {
 

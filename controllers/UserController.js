@@ -7,14 +7,7 @@ function usersController() {
     var generalResponse = require('./GeneralResponse');
     var bcrypt = require('bcrypt');
     var mongoose = require('../db').mongoose;
-    var nodemailer = require('nodemailer');
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'musikey2018@gmail.com',
-            pass: '090078601!'
-        }
-    });
+    var transporter = require('./EmailController');
 
     // Register User
     that.register = function (req, res, next) {

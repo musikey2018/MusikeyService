@@ -15,15 +15,8 @@ function EventsController() {
     var users = require('../models/musikeyUserSchema');
 
     var config = require("../maps-config.js");
-    var nodemailer = require('nodemailer');
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'musikey2018@gmail.com',
-            pass: '090078601!'
-        }
-    });
-
+    
+    var transporter = require("./EmailController")
 
     var NearBySearch = require("googleplaces/lib/NearBySearch");
     var nearBySearch = new NearBySearch(config.apiKey, config.outputFormat);
