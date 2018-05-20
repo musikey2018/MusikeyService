@@ -7,9 +7,9 @@ function ImagesController() {
     var that = this;
     var generalResponse = require('./GeneralResponse');
     var request = require('request').defaults({encoding: null});
-    var cloudinary = require('./CloudinaryController');
+    var cloudinary = require('../core/Cloudinary');
     var users = require('../models/musikeyUserSchema');
-    var images = require('../models/imagesSchema');
+    var images = require('../core/imagesSchema');
 
 
     

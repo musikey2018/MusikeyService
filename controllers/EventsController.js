@@ -16,7 +16,7 @@ function EventsController() {
 
     var config = require("../maps-config.js");
     
-    var transporter = require("./EmailController")
+    var transporter = require("../core/Email")
 
     var NearBySearch = require("googleplaces/lib/NearBySearch");
     var nearBySearch = new NearBySearch(config.apiKey, config.outputFormat);

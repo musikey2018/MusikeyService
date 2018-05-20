@@ -7,7 +7,7 @@ function usersController() {
     var generalResponse = require('./GeneralResponse');
     var bcrypt = require('bcrypt');
     var mongoose = require('../db').mongoose;
-    var transporter = require('./EmailController');
+    var transporter = require('../core/Email');
 
     // Register User
     that.register = function (req, res, next) {

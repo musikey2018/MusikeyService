@@ -13,9 +13,9 @@ function PlayListController() {
     var events = require('../models/eventsSchema');
     var users = require('../models/musikeyUserSchema');
     var playlist = require('../models/playlistSchema');
-    var pusher = require('./PusherController');
+    var notifier = require('../core/Notifier');
 
-    var transporter = require('./EmailController');
+    var transporter = require('../core/Email');
 
     // Create new playlist
     that.createEventPlaylist = function (req, res, next) {
@@ -94,7 +94,7 @@ function PlayListController() {
                     return res.send(generalResponse.sendFailureResponse("Error Occured While update for event playlist", 400, err));
                 }
 
-                pusher.trigger('playlist_update','newSong-'+eventDoc._id,eventDoc);
+                notifier.trigger('playlist_update','newSong-'+eventDoc._id,eventDoc);
 
                 // events.findByIdAndUpdate(req.params.eventId,{ 'playlist': eventDoc} ,{ new: 'true' }, function (err, eventDoc) {
                 //     console.log('updated event');
@@ -140,7 +140,7 @@ function PlayListController() {
                     return res.send(generalResponse.sendFailureResponse("Error Occured While update for event playlist", 400, err));
                 }
 
-                pusher.trigger('vote_update','vote-'+eventDoc._id,eventDoc);
+                notifier.trigger('vote_update','vote-'+eventDoc._id,eventDoc);
 
                 // events.findByIdAndUpdate(req.params.eventId,{ 'playlist': eventDoc} ,{ new: 'true' }, function (err, eventDoc) {
                 //     console.log('updated event');
