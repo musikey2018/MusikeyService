@@ -67,7 +67,9 @@ function usersController() {
                                     }
                                 }
                                 console.log(chatReq);
-                                chatService.registerUserForChat(chatReq,res);
+                                chatService.registerUserForChat(chatReq,res).then(response => {
+                                    console.log(response);
+                                });
                                 console.log('response from chat service');
                                 console.log(res)
                                 
