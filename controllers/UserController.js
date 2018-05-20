@@ -67,23 +67,22 @@ function usersController() {
                                     }
                                 }
                                 console.log(chatReq);
-                                chatService.registerUserForChat(chatReq,res).then(response => {
-                                    console.log(response);
-                                });
-                                console.log('response from chat service');
-                                console.log(res)
-                                
-                                transporter.sendMail({
-                                    to: user.email,
-                                    subject: "Musikey - ( platform to share your music) Registration Success",
-                                    text: "You have successfully registered to Musikey. Exploration of World is now on tip of your hand"
-                                }, function (error, info) {
-                                    if (error) {
-                                        console.log("UserController sendEmail() Email Send error ", error);
-                                    } else {
-                                        console.log('UserController sendEmail() Email sent: ' + info.response);
-                                    }
-                                });
+                                var isRegistered = that.registerUserForChat(chatReq);
+                                if(isRegistered != undefined && isRegistered == true) {
+                                    transporter.sendMail({
+                                        to: user.email,
+                                        subject: "Musikey - ( platform to share your music) Registration Success",
+                                        text: "You have successfully registered to Musikey. Exploration of World is now on tip of your hand"
+                                    }, function (error, info) {
+                                        if (error) {
+                                            console.log("UserController sendEmail() Email Send error ", error);
+                                        } else {
+                                            console.log('UserController sendEmail() Email sent: ' + info.response);
+                                        }
+                                    });
+                                } else {
+                                    console.log("register for chat again!! ");
+                                }
 
                                 return res.send(generalResponse.sendSuccessResponse("Registration Was successful", 200, result));
                             }
@@ -345,6 +344,30 @@ function usersController() {
         return next();
 
     };
+
+    that.registerUserForChat = function (req) {
+
+        var useremail = req.params.email;
+        var userId =  req.params.userId;
+
+        console.log("UserController.registerUserForChat() email request ", useremail);
+        console.log("UserController.registerUserForChat() eventId ", userId);
+        
+        chatService.createUser({
+            id: userId,
+            name: useremail,
+          })
+            .then(() => {
+              console.log('User registered for chat successfully');
+             
+            }).catch((err) => {
+              console.log(err);
+              return false;
+        });
+        return true;
+
+    }
+
     that.randomString = function () {
         var length = 4;
         str = '';
