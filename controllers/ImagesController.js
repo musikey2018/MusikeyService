@@ -9,7 +9,7 @@ function ImagesController() {
     var request = require('request').defaults({encoding: null});
     var cloudinary = require('../core/Cloudinary');
     var users = require('../models/musikeyUserSchema');
-    var images = require('../core/imagesSchema');
+    var images = require('../models/imagesSchema');
 
 
     
