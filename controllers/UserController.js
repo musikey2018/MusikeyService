@@ -67,13 +67,9 @@ function usersController() {
                                     }
                                 }
                                 console.log(chatReq);
-                                chatService.registerUserForChat(chatReq,res, function(chaterr, resp){
-                                    if(chaterr){
-                                        console.log('error from chat controller'+chaterr);
-                                    } else {
-                                        console.log(resp)
-                                    }
-                                });
+                                chatService.registerUserForChat(chatReq,res);
+                                console.log('response from chat service');
+                                console.log(res)
                                 
                                 transporter.sendMail({
                                     to: user.email,
@@ -81,9 +77,9 @@ function usersController() {
                                     text: "You have successfully registered to Musikey. Exploration of World is now on tip of your hand"
                                 }, function (error, info) {
                                     if (error) {
-                                        console.log("UserController that.sendEmail() Email Send error ", error);
+                                        console.log("UserController sendEmail() Email Send error ", error);
                                     } else {
-                                        console.log('UserController that.sendEmail() Email sent: ' + info.response);
+                                        console.log('UserController sendEmail() Email sent: ' + info.response);
                                     }
                                 });
 
