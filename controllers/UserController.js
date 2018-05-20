@@ -8,6 +8,7 @@ function usersController() {
     var bcrypt = require('bcrypt');
     var mongoose = require('../db').mongoose;
     var transporter = require('../core/Email');
+    var chatService = require('./ChatController')
 
     // Register User
     that.register = function (req, res, next) {
@@ -39,7 +40,7 @@ function usersController() {
                         city: parameters.city,
                         imageURL: parameters.imageURL,
                         verificationCode: '',
-                        friends: ["mujahid.mms@gmail.com","rafiq@gmail.com","billy@mail.com"],
+                        friends: [,"rafiq@gmail.com","billy@mail.com"],
                         comments: ["This is test comment","this is test comment 2"],
                         checkIns: ["Location 1","Location 2"],
                         images: [
@@ -58,16 +59,27 @@ function usersController() {
                                 return res.send(generalResponse.sendFailureResponse("Error Occured While registering a user", 400, err));
                             }
                             else {
-
+                                var chatReq = {
+                                    email: req.params.email,
+                                    userId: result._id
+                                }
+                                chatService.registerUserForChat(chatReq,res, function(chaterr, resp){
+                                    if(chaterr){
+                                        console.log('error from chat controller'+chaterr);
+                                    } else {
+                                        console.log(resp)
+                                    }
+                                });
+                                
                                 transporter.sendMail({
                                     to: user.email,
                                     subject: "Musikey - ( platform to share your music) Registration Success",
                                     text: "You have successfully registered to Musikey. Exploration of World is now on tip of your hand"
                                 }, function (error, info) {
                                     if (error) {
-                                        console.log("UtilController that.sendEmail() Email Send error ", error);
+                                        console.log("UserController that.sendEmail() Email Send error ", error);
                                     } else {
-                                        console.log('UtilController that.sendEmail() Email sent: ' + info.response);
+                                        console.log('UserController that.sendEmail() Email sent: ' + info.response);
                                     }
                                 });
 
