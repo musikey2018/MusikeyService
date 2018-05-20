@@ -8,7 +8,7 @@ function usersController() {
     var bcrypt = require('bcrypt');
     var mongoose = require('../db').mongoose;
     var transporter = require('../core/Email');
-    var chatService = require('./ChatController')
+    var chatService = require('../core/Chat')
 
     // Register User
     that.register = function (req, res, next) {
