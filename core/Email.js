@@ -3,7 +3,7 @@
  * for sending email notification
  */
 
-var nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer-smtp-transport');
 
 var transporter = nodemailer.createTransport({
     service: process.env.EMAIL_APP_SERVICE,
