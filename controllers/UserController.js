@@ -59,10 +59,12 @@ function usersController() {
                                 return res.send(generalResponse.sendFailureResponse("Error Occured While registering a user", 400, err));
                             }
                             else {
+                                console.log(chatReq);
                                 var chatReq = {
-                                    email: req.params.email,
-                                    userId: result._id
+                                    "params.email": req.params.email,
+                                    "params.userId": result._id
                                 }
+                                console.log(chatReq);
                                 chatService.registerUserForChat(chatReq,res, function(chaterr, resp){
                                     if(chaterr){
                                         console.log('error from chat controller'+chaterr);
