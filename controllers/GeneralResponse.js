@@ -2,7 +2,7 @@
 var response ={
         sendSuccessResponse: function (message,code,data) {
         var    successResponse = {
-                res: "true",
+                res: true,
                 response: message,
                 token: "",
                 sessionid: "",
@@ -10,14 +10,14 @@ var response ={
             };
             return successResponse;
         },
-    sendFailureResponse:function (error,code,data) {
+    sendFailureResponse:function (error,code, errorData) {
       var  failureResponse=
         {
-            res:"false",
+            res:false,
             response:error,
             token:"",
             sessionid:"",
-            responseData:data
+            responseData:errorData
         };
       return failureResponse;
     }
