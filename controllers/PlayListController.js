@@ -86,7 +86,7 @@ function PlayListController() {
            
             console.log(req.params);
 
-            playlist.findOneAndUpdate({'eventId':req.params.eventId},{$push:{'songs':newSong}} ,{ new: 'true'}, function (err, eventDoc) {
+            playlist.findOneAndUpdate({'eventId':req.params.eventId},{$addToSet:{'songs':newSong}} ,{ new: 'true'}, function (err, eventDoc) {
                 console.log('updated event playlist');
                 console.log(eventDoc);
                 if (err) {
