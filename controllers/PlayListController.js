@@ -61,7 +61,7 @@ function PlayListController() {
                    
                 //     return res.send(generalResponse.sendSuccessResponse("update event  with new playlist successfully", 200, eventDoc));
                 // });
-                return res.send(generalResponse.sendSuccessResponse("playlist updated successfully", 200, eventDoc));
+                return res.send(generalResponse.sendSuccessResponse("playlist created/updated successfully", 200, eventDoc));
             });
 
             
@@ -94,7 +94,11 @@ function PlayListController() {
                     return res.send(generalResponse.sendFailureResponse("Error Occured While update for event playlist", 400, err));
                 }
 
-                notifier.trigger('playlist_update','newSong-'+eventDoc._id,eventDoc);
+                if( null == eventDoc || undefined ==eventDoc) {
+                    return res.send(generalResponse.sendFailureResponse("update failed", 200, null));
+                }
+                if(null!= eventDoc._id &&  eventDoc._id != undefined) 
+                    notifier.trigger('playlist_update','newSong-'+eventDoc._id,eventDoc);
 
                 // events.findByIdAndUpdate(req.params.eventId,{ 'playlist': eventDoc} ,{ new: 'true' }, function (err, eventDoc) {
                 //     console.log('updated event');
@@ -139,19 +143,12 @@ function PlayListController() {
                     console.log(err);
                     return res.send(generalResponse.sendFailureResponse("Error Occured While update for event playlist", 400, err));
                 }
-                if(null!= eventId &&  eventId != undefined) 
+                if( null == eventDoc || undefined ==eventDoc) {
+                    return res.send(generalResponse.sendFailureResponse("can not update vote for given song", 200, null));
+                }
+                if(null!= eventDoc._id &&  eventDoc._id != undefined) 
                     notifier.trigger('vote_update','vote-'+eventId,eventDoc);
 
-                // events.findByIdAndUpdate(req.params.eventId,{ 'playlist': eventDoc} ,{ new: 'true' }, function (err, eventDoc) {
-                //     console.log('updated event');
-                //     console.log(eventDoc);
-                //     if (err) {
-                //         console.log(err);
-                //         return res.send(generalResponse.sendFailureResponse("Error Occured  While update for event playlist", 400, err));
-                //     }
-                   
-                //     return res.send(generalResponse.sendSuccessResponse("update event  with new playlist successfully", 200, eventDoc));
-                // });
                 return res.send(generalResponse.sendSuccessResponse("playlist updated successfully", 200, eventDoc));
             });
 
