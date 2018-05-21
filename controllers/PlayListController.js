@@ -135,8 +135,8 @@ function PlayListController() {
             var likedBy = req.params.likedBy;
            
             console.log(req.params);
-
-            playlist.findOneAndUpdate({"eventId":req.params.eventId, "songs":{$elemMatch:{"name":songName}}},{$inc:{"songs.$.votes":1}, $push:{"songs.$.likedBy":likedBy}} ,{ new: 'true', sort:{ "songs.$.votes": -1 }}, function (err, eventDoc) {
+            //sort:{ "songs.$.votes": -1 }
+            playlist.findOneAndUpdate({"eventId":req.params.eventId, "songs":{$elemMatch:{"name":songName}}},{$inc:{"songs.$.votes":1}, $push:{"songs.$.likedBy":likedBy}} ,{ new: 'true'}, function (err, eventDoc) {
                 console.log('updated event playlist');
                 console.log(eventDoc);
                 if (err) {
