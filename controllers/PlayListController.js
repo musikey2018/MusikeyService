@@ -97,8 +97,10 @@ function PlayListController() {
                 if( null == eventDoc || undefined ==eventDoc) {
                     return res.send(generalResponse.sendFailureResponse("update failed", 200, null));
                 }
-                if(null!= eventDoc._id &&  eventDoc._id != undefined) 
+                if(null!= eventDoc._id &&  eventDoc._id != undefined) {
+                    console.log('updated playlist generating notification');
                     notifier.trigger('playlist_update','newSong-'+eventDoc._id,eventDoc);
+                }
 
                 // events.findByIdAndUpdate(req.params.eventId,{ 'playlist': eventDoc} ,{ new: 'true' }, function (err, eventDoc) {
                 //     console.log('updated event');
@@ -146,8 +148,10 @@ function PlayListController() {
                 if( null == eventDoc || undefined ==eventDoc) {
                     return res.send(generalResponse.sendFailureResponse("can not update vote for given song", 200, null));
                 }
-                if(null!= eventDoc._id &&  eventDoc._id != undefined) 
+                if(null!= eventDoc._id &&  eventDoc._id != undefined) {
+                    console.log('updated vote count generating notification');
                     notifier.trigger('vote_update','vote-'+eventId,eventDoc);
+                }
 
                 return res.send(generalResponse.sendSuccessResponse("playlist updated successfully", 200, eventDoc));
             });
