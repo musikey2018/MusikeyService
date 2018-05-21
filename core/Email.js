@@ -14,5 +14,6 @@ var transporter = nodemailer.createTransport({
         pass: process.env.EMAIL_APP_PASS
     }
 });
-    
+console.log(process.env.EMAIL_APP_HOST)
+console.log(process.env.EMAIL_APP_USER)
 module.exports=transporter;

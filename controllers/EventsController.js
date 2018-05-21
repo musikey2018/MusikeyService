@@ -267,17 +267,17 @@ function EventsController() {
                             }
                             else {
 
-                                transporter.sendMail({
-                                    to: event.email,
-                                    subject: "Musikey - ( platform to share your music) Event created",
-                                    text: "You have successfully created new event to Musikey. Exploration of World is now on tip of your hand"
-                                }, function (error, info) {
-                                    if (error) {
-                                        console.log("UtilController that.sendEmail() Email Send error ", error);
-                                    } else {
-                                        console.log('UtilController that.sendEmail() Email sent: ' + info.response);
-                                    }
-                                });
+                                // transporter.sendMail({
+                                //     to: event.email,
+                                //     subject: "Musikey - ( platform to share your music) Event created",
+                                //     text: "You have successfully created new event to Musikey. Exploration of World is now on tip of your hand"
+                                // }, function (error, info) {
+                                //     if (error) {
+                                //         console.log("UtilController that.sendEmail() Email Send error ", error);
+                                //     } else {
+                                //         console.log('UtilController that.sendEmail() Email sent: ' + info.response);
+                                //     }
+                                // });
 
                                 return res.send(generalResponse.sendSuccessResponse("Event creation Was successful", 200, result));
                             }
