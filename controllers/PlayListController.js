@@ -139,7 +139,7 @@ function PlayListController() {
                     console.log(err);
                     return res.send(generalResponse.sendFailureResponse("Error Occured While update for event playlist", 400, err));
                 }
-
+                if(null!= eventDoc._id &&  eventDoc._id != undefined) 
                 notifier.trigger('vote_update','vote-'+eventDoc._id,eventDoc);
 
                 // events.findByIdAndUpdate(req.params.eventId,{ 'playlist': eventDoc} ,{ new: 'true' }, function (err, eventDoc) {
