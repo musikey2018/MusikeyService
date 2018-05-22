@@ -323,10 +323,10 @@ function EventsController() {
     // add participant
     that.joinEventById = function (req, res, next) {
         try {
-
+            console.log('/joinEventById');
             console.log(req.params);
             events.findByIdAndUpdate(req.params.eventId,{ $push: { participants:req.params.email},$inc : {participantsCount : 1}},{ new: 'true' }, function (err, eventDoc) {
-                console.log('updated event');
+                console.log('/joinEventById: updated event');
                 console.log(eventDoc);
                 if (err) {
                     console.log(err);
