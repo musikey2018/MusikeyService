@@ -32,7 +32,7 @@ function ImagesController() {
 
         var useremail = req.params.email;
         var eventId =  req.params.eventId;
-        var imageData = req.params.imageData;
+        var imageData = "data:audio/mp3;base64,"+req.params.imageData ;
 
         console.log("ImagesController.upload() email request ", useremail);
         console.log("ImagesController.upload() eventId ", eventId);
@@ -67,6 +67,48 @@ function ImagesController() {
         });
 
     }
+
+    that.uploadFile = function (req, res, next) {
+
+        var useremail = req.params.email;
+        var eventId =  req.params.eventId;
+        var audiofileData = req.params.fileData;
+        var public_id = req.params.fileName;
+
+        console.log("ImagesController.upload() email request ", useremail);
+        console.log("ImagesController.upload() eventId ", eventId);
+        console.log("ImagesController.upload() image data  ", imageData);
+        
+        //imageData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+        cloudinary.v2.uploader.upload(imageData, {"resource_type":"raw","public_id":public_id}, function(error, uploadedImage) {
+            if (error) {
+                console.log("ImagesController.upload() error ocurred", error);
+                return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, null));
+            } else {
+                if('undefined' != uploadedImage  && null != uploadedImage) {
+                    console.log('image is uploaded on cloud saving in database');
+                    console.log(uploadedImage);
+                    if(uploadedImage.url.length > 1 || uploadedImage.secure_url.length > 1) {
+                        console.log('access url is:' + uploadedImage.url);
+                        
+                        images.findOneAndUpdate({"eventId":req.params.eventId, "imageSchema":{$elemMatch:{"public_id":uploadedImage.public_id}}},{'eventId':eventId, 'useremail':useremail, $push:{'imageData':imageData,"imageSchema":uploadedImage}} ,{ new: 'true', upsert:'true' }, function (err, imageDoc) {
+                            console.log('image added in database successfully');
+                            console.log(imageDoc);
+                            if (err) {
+                                console.log(err);
+                                return res.send(generalResponse.sendFailureResponse("Error Occured While inserting image in database", 400, err));
+                            }
+                            return res.send(generalResponse.sendSuccessResponse("image is uploaded successfully", 200, imageDoc));
+                        });
+
+                    }
+                }
+            }
+
+        });
+
+    }
+
 
     return that;
 
