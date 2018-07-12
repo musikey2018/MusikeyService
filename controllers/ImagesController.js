@@ -72,7 +72,7 @@ function ImagesController() {
 
         var useremail = req.params.email;
         var eventId =  req.params.eventId;
-        var fileData = req.params.fileData;
+        var fileData = "data:raw;base64,"+req.params.fileData;
         var public_id = eventId+"__"+req.params.fileName;
 
         console.log("ImagesController.upload() email request ", useremail);
