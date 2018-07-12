@@ -81,7 +81,7 @@ function ImagesController() {
         console.log("ImagesController.upload() public_id   ", public_id);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.upload(fileData, {"resource_type":"raw","public_id":public_id}, function(error, uploadedImage) {
+        cloudinary.v2.uploader.unsigned_upload(fileData, {"resource_type":"raw","public_id":public_id, "folder":eventId, "type":"upload"}, function(error, uploadedImage) {
             if (error) {
                 console.log("ImagesController.upload() error ocurred", error);
                 return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, null));
