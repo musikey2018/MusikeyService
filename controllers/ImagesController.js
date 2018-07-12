@@ -77,7 +77,8 @@ function ImagesController() {
 
         console.log("ImagesController.upload() email request ", useremail);
         console.log("ImagesController.upload() eventId ", eventId);
-        console.log("ImagesController.upload() image data  ", fileData);
+        console.log("ImagesController.upload() file data  ", fileData);
+        console.log("ImagesController.upload() public_id   ", public_id);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
         cloudinary.v2.uploader.upload(fileData, {"resource_type":"raw","public_id":public_id}, function(error, uploadedImage) {
