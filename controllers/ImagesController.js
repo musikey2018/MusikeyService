@@ -82,8 +82,9 @@ function ImagesController() {
         console.log("ImagesController.uploadFile() file data  ", fileData);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.upload(fileData, "n6vhv4ad",  {"resource_type": "auto", "public_id":publicId, "folder":eventId, "type":"upload"}, function(error, result) {
+        cloudinary.v2.uploader.upload(fileData, "n6vhv4ad",  {"resource_type": "auto", "public_id":publicId, "type":"upload"}, function(error, result) {
             console.log(result, error);
+            return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, null));
         });
 
     }
@@ -96,14 +97,15 @@ function ImagesController() {
         var fileData = "data:"+dataType+";base64,"+req.params.fileData;
         var publicId = eventId+"__"+req.params.fileName;
 
-        console.log("ImagesController.uploadFile() email request ", useremail);
-        console.log("ImagesController.uploadFile() eventId ", eventId);
-        console.log("ImagesController.uploadFile() public_id   ", publicId);
-        console.log("ImagesController.uploadFile() file data  ", fileData);
+        console.log("ImagesController.uploadFileRaw() email request ", useremail);
+        console.log("ImagesController.uploadFileRaw() eventId ", eventId);
+        console.log("ImagesController.uploadFileRaw() public_id   ", publicId);
+        console.log("ImagesController.uploadFileRaw() file data  ", fileData);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.unsigned_upload(fileData,"agonhyod", {"resource_type": "auto","public_id":publicId, "folder":eventId}, function(error, result) {
+        cloudinary.v2.uploader.unsigned_upload(fileData,"agonhyod", {"resource_type": "auto", "public_id":publicId }, function(error, result) {
             console.log(result, error);
+            return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, null));
         });
 
     }
