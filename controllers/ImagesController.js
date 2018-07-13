@@ -74,13 +74,16 @@ function ImagesController() {
         var eventId =  req.params.eventId;
         var fileData = "data:raw;base64,"+req.params.fileData;
         var public_id = eventId+"__"+req.params.fileName;
+        var fileData2 = req.body;
 
         console.log("ImagesController.upload() email request ", useremail);
         console.log("ImagesController.upload() eventId ", eventId);
         console.log("ImagesController.upload() public_id   ", public_id);
         console.log("ImagesController.upload() file data  ", fileData);
         
-        
+        cloudinary.v2.uploader.upload(fileData2, "n6vhv4ad", { "resource_type":"video", "public_id":public_id}, function(error, uploadedFile) {
+            return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, error));
+        });
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
         cloudinary.v2.uploader.upload(fileData, "n6vhv4ad", { "resource_type":"video", "public_id":public_id,"folder":"mp3"}, function(error, uploadedFile) {
             console.log("uploadedFile is ::::",uploadedFile)
