@@ -81,7 +81,7 @@ function ImagesController() {
         console.log("ImagesController.upload() public_id   ", public_id);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.unsigned_upload(fileData, "agonhyod", { "resource_type":"raw","public_id":public_id, "folder":eventId}, function(error, uploadedImage) {
+        cloudinary.v2.uploader.upload(fileData, "n6vhv4ad", { "resource_type":"video","public_id":public_id, "folder":eventId}, function(error, uploadedImage) {
             if (error) {
                 console.log("ImagesController.upload() error ocurred", error);
                 console.log("errormessage is ::::",error.message)
@@ -94,7 +94,7 @@ function ImagesController() {
                     if(uploadedImage.url.length > 1 || uploadedImage.secure_url.length > 1) {
                         console.log('access url is:' + uploadedImage.url);
                         
-                        images.findOneAndUpdate({"eventId":req.params.eventId, "imageSchema":{$elemMatch:{"public_id":uploadedImage.public_id}}},{'eventId':eventId, 'useremail':useremail, $push:{'imageData':imageData,"imageSchema":uploadedImage}} ,{ new: 'true', upsert:'true' }, function (err, imageDoc) {
+                        images.findOneAndUpdate({"eventId":req.params.eventId, "imageSchema":{$elemMatch:{"public_id":uploadedImage.public_id}}},{'eventId':eventId, 'useremail':useremail, $push:{'imageData':fileData,"imageSchema":uploadedImage}} ,{ new: 'true', upsert:'true' }, function (err, imageDoc) {
                             console.log('image added in database successfully');
                             console.log(imageDoc);
                             if (err) {
