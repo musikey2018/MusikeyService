@@ -78,7 +78,7 @@ function ImagesController() {
     
         console.log("ImagesController.uploadFile() email request ", useremail);
         console.log("ImagesController.uploadFile() eventId ", eventId);
-        console.log("ImagesController.uploadFile() public_id   ", public_id);
+        console.log("ImagesController.uploadFile() public_id   ", publicId);
         console.log("ImagesController.uploadFile() file data  ", fileData);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
@@ -95,12 +95,10 @@ function ImagesController() {
         var eventId =  req.params.eventId;
         var fileData = "data:raw;base64,"+req.params.fileData;
         var publicId = eventId+"__"+req.params.fileName;
-        var fileData2 = req.body;
-        console.log("body",req.body)
 
         console.log("ImagesController.uploadFile() email request ", useremail);
         console.log("ImagesController.uploadFile() eventId ", eventId);
-        console.log("ImagesController.uploadFile() public_id   ", public_id);
+        console.log("ImagesController.uploadFile() public_id   ", publicId);
         console.log("ImagesController.uploadFile() file data  ", fileData);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
