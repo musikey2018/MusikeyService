@@ -72,7 +72,7 @@ function ImagesController() {
 
         var useremail = req.params.email;
         var eventId =  req.params.eventId;
-        var fileData = req.params.fileData;
+        var fileData =  new Buffer(req.params.fileData).toString();
         var publicId = eventId+"__"+req.params.fileName;
         
     
@@ -80,12 +80,12 @@ function ImagesController() {
         console.log("ImagesController.uploadFile() eventId ", eventId);
         console.log("ImagesController.uploadFile() public_id   ", publicId);
         console.log("ImagesController.uploadFile() file data  ", fileData);
-        
+        cloudinary.v2.uploader.upload(fileData, { resource_type: "video", public_id: publicId},function(error, result) {console.log(result, error)});
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.upload(fileData, "n6vhv4ad",  {"resource_type": "auto", "public_id":publicId, "type":"upload"}, function(error, result) {
-            console.log(result, error);
-            return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, null));
-        });
+        // cloudinary.v2.uploader.upload(fileData, "n6vhv4ad",  {"resource_type": "auto", "public_id":publicId, "type":"upload"}, function(error, result) {
+        //     console.log(result, error);
+        //     return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, error));
+        // });
 
     }
 
@@ -102,10 +102,11 @@ function ImagesController() {
         console.log("ImagesController.uploadFileRaw() public_id   ", publicId);
         console.log("ImagesController.uploadFileRaw() file data  ", fileData);
         
+
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
         cloudinary.v2.uploader.unsigned_upload(fileData,"agonhyod", {"resource_type": "auto", "public_id":publicId }, function(error, result) {
             console.log(result, error);
-            return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, null));
+            return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, error));
         });
 
     }
