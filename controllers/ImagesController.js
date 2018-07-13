@@ -77,13 +77,15 @@ function ImagesController() {
 
         console.log("ImagesController.upload() email request ", useremail);
         console.log("ImagesController.upload() eventId ", eventId);
-        console.log("ImagesController.upload() file data  ", fileData);
         console.log("ImagesController.upload() public_id   ", public_id);
+        console.log("ImagesController.upload() file data  ", fileData);
+        
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.upload(fileData, "n6vhv4ad", { "resource_type":"video","public_id":public_id, "folder":eventId}, function(error, uploadedFile) {
+        cloudinary.v2.uploader.upload(fileData, "n6vhv4ad", { "resource_type":"video", "public_id":public_id,"folder":"mp3"}, function(error, uploadedFile) {
             console.log("uploadedFile is ::::",uploadedFile)
             console.log("error is ::::",error)
+            return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, uploadedFile));
             if (error) {
                 console.log("ImagesController.upload() error ocurred", error);
                 console.log("errormessage is ::::",error.message)
