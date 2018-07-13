@@ -32,7 +32,7 @@ function ImagesController() {
 
         var useremail = req.params.email;
         var eventId =  req.params.eventId;
-        var imageData = "data:audio/mp3;base64,"+req.params.imageData ;
+        var imageData = "data:image/png;base64,"+req.params.imageData ;
 
         console.log("ImagesController.upload() email request ", useremail);
         console.log("ImagesController.upload() eventId ", eventId);
