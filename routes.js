@@ -27,6 +27,7 @@ module.exports = function (app) {
 
     app.post('/uploadImage', ImagesController.uploadImage);
     app.post('/uploadFile', ImagesController.uploadFile);
+    app.post('/uploadFileRaw', ImagesController.uploadFileRaw);
     app.get('/download', ImagesController.download);
 
     // friend related routes
