@@ -10,6 +10,7 @@ function ImagesController() {
     var cloudinary = require('../core/Cloudinary');
     var users = require('../models/musikeyUserSchema');
     var images = require('../models/imagesSchema');
+    var fs = require("fs")
 
 
     
