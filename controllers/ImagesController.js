@@ -1,7 +1,6 @@
 /**
  * Created by Bilawal Aziz on 30.04.18.
  */
-import fs from 'fs';
 
 function ImagesController() {
 
