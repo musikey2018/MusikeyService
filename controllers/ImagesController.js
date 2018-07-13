@@ -82,7 +82,7 @@ function ImagesController() {
         console.log("ImagesController.uploadFile() file data  ", fileData);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.upload(fileData, {"resource_type": "video", "public_id":publicId}, function(error, result) {
+        cloudinary.v2.uploader.upload(fileData, "n6vhv4ad",  {"resource_type": "auto", "public_id":publicId, "folder":eventId, "type":"upload"}, function(error, result) {
             console.log(result, error);
         });
 
@@ -102,7 +102,7 @@ function ImagesController() {
         console.log("ImagesController.uploadFile() file data  ", fileData);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.unsigned_upload(fileData,"n6vhv4ad", {"resource_type": "video","public_id":publicId}, function(error, result) {
+        cloudinary.v2.uploader.unsigned_upload(fileData,"agonhyod", {"resource_type": "auto","public_id":publicId, "folder":eventId}, function(error, result) {
             console.log(result, error);
         });
 
