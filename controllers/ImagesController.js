@@ -73,7 +73,28 @@ function ImagesController() {
         var useremail = req.params.email;
         var eventId =  req.params.eventId;
         var fileData = "data:raw;base64,"+req.params.fileData;
-        var public_id = eventId+"__"+req.params.fileName;
+        var publicId = eventId+"__"+req.params.fileName;
+        
+    
+        console.log("ImagesController.uploadFile() email request ", useremail);
+        console.log("ImagesController.uploadFile() eventId ", eventId);
+        console.log("ImagesController.uploadFile() public_id   ", public_id);
+        console.log("ImagesController.uploadFile() file data  ", fileData);
+        
+        //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+        cloudinary.v2.uploader.upload(fileData,"n6vhv4ad", {resource_type: "auto",public_id:publicId}, function(error, result) {
+            console.log(result, error);
+            return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, result));
+        });
+
+    }
+
+    that.uploadFileRaw = function (req, res, next) {
+
+        var useremail = req.params.email;
+        var eventId =  req.params.eventId;
+        var fileData = "data:raw;base64,"+req.params.fileData;
+        var publicId = eventId+"__"+req.params.fileName;
         var fileData2 = req.body;
         console.log("body",req.body)
 
@@ -83,7 +104,7 @@ function ImagesController() {
         console.log("ImagesController.uploadFile() file data  ", fileData);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.upload_unsigned(fileData,"n6vhv4ad", {"resource_type":"video","public_id":public_id}, function(error, result) {
+        cloudinary.v2.uploader.unsigned_upload(fileData,"n6vhv4ad", {resource_type: "video",public_id:publicId}, function(error, result) {
             console.log(result, error);
             return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, result));
         });
