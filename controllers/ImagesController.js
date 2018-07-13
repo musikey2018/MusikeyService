@@ -1,6 +1,7 @@
 /**
  * Created by Bilawal Aziz on 30.04.18.
  */
+import fs from 'fs';
 
 function ImagesController() {
 
@@ -75,12 +76,14 @@ function ImagesController() {
         var fileData =  new Buffer(req.params.fileData).toString();
         var publicId = eventId+"__"+req.params.fileName;
         
-    
+        var uploadFile = fs.writeFile(req.params.fileName+'.mp3', fileData, {encoding: 'base64'}, function(err) {
+            console.log('File created');
+        });
         console.log("ImagesController.uploadFile() email request ", useremail);
         console.log("ImagesController.uploadFile() eventId ", eventId);
         console.log("ImagesController.uploadFile() public_id   ", publicId);
         console.log("ImagesController.uploadFile() file data  ", fileData);
-        cloudinary.v2.uploader.upload(fileData, { resource_type: "video", public_id: publicId},function(error, result) {console.log(result, error)});
+        cloudinary.v2.uploader.upload(uploadFile,"mwcar4uv", { resource_type: "video", public_id: publicId},function(error, result) {console.log(result, error)});
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
         // cloudinary.v2.uploader.upload(fileData, "n6vhv4ad",  {"resource_type": "auto", "public_id":publicId, "type":"upload"}, function(error, result) {
         //     console.log(result, error);
