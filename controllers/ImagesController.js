@@ -84,7 +84,6 @@ function ImagesController() {
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
         cloudinary.v2.uploader.upload(fileData,"n6vhv4ad", {resource_type: "auto",public_id:publicId}, function(error, result) {
             console.log(result, error);
-            return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, result));
         });
 
     }
@@ -104,7 +103,6 @@ function ImagesController() {
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
         cloudinary.v2.uploader.unsigned_upload(fileData,"n6vhv4ad", {resource_type: "video",public_id:publicId}, function(error, result) {
             console.log(result, error);
-            return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, result));
         });
 
     }
