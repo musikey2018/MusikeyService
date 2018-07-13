@@ -81,23 +81,22 @@ function ImagesController() {
         console.log("ImagesController.upload() public_id   ", public_id);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.upload(fileData, "n6vhv4ad", { "resource_type":"video","public_id":public_id, "folder":eventId}, function(error, uploadResult) {
-            console.log("uploadResult==>",uploadResult)
-            console.log("error==>",error)
+        cloudinary.v2.uploader.upload(fileData, "n6vhv4ad", { "resource_type":"video","public_id":public_id, "folder":eventId}, function(error, uploadedFile) {
+            console.log("uploadedFile is ::::",uploadedFile)
             if (error) {
                 console.log("ImagesController.upload() error ocurred", error);
                 console.log("errormessage is ::::",error.message)
                 console.log("errormessage is ::::",error.http_code)
                 return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, null));
             } else {
-                console.log("uploadResult",uploadResult)
-                if('undefined' != uploadResult  && null != uploadResult) {
-                    console.log('file is uploaded on cloud saving in database');
-                    console.log(uploadResult);
-                    if(uploadResult.url.length > 1 || uploadResult.secure_url.length > 1) {
-                        console.log('access url is:' + uploadResult.url);
+                
+                if('undefined' != uploadedFile  && null != uploadedFile) {
+                    console.log('image is uploaded on cloud saving in database');
+                    console.log(uploadedFile);
+                    if(uploadedFile.url.length > 1 || uploadedFile.secure_url.length > 1) {
+                        console.log('access url is:' + uploadedFile.url);
                         
-                        images.findOneAndUpdate({"eventId":req.params.eventId, "imageSchema":{$elemMatch:{"public_id":uploadResult.public_id}}},{'eventId':eventId, 'useremail':useremail, $push:{'imageData':imageData,"imageSchema":uploadResult}} ,{ new: 'true', upsert:'true' }, function (err, imageDoc) {
+                        images.findOneAndUpdate({"eventId":req.params.eventId, "imageSchema":{$elemMatch:{"public_id":uploadedFile.public_id}}},{'eventId':eventId, 'useremail':useremail, $push:{'imageData':imageData,"imageSchema":uploadedFile}} ,{ new: 'true', upsert:'true' }, function (err, imageDoc) {
                             console.log('image added in database successfully');
                             console.log(imageDoc);
                             if (err) {
