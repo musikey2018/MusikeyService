@@ -82,8 +82,7 @@ function ImagesController() {
         console.log("ImagesController.uploadFile() file data  ", fileData);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.upload("data:raw;base64,AAAAGGZ0eXAzZ3A0AAAAAGlzb20zZ3A0AAFPRW1kYXQBQCLvv73vv71/77+9LS0tLS0tLS0tLS0t%20LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t%20LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t%20LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t%20LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t%20LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLu+/ve+/vQ=="
-        ,"n6vhv4ad", {"resource_type": "video", "public_id":publicId}, function(error, result) {
+        cloudinary.v2.uploader.upload(fileData, {"resource_type": "video", "public_id":publicId}, function(error, result) {
             console.log(result, error);
         });
 
@@ -93,7 +92,8 @@ function ImagesController() {
 
         var useremail = req.params.email;
         var eventId =  req.params.eventId;
-        var fileData = "data:raw;base64,"+req.params.fileData;
+        var dataType = req.params.dataType
+        var fileData = "data:"+dataType+";base64,"+req.params.fileData;
         var publicId = eventId+"__"+req.params.fileName;
 
         console.log("ImagesController.uploadFile() email request ", useremail);
