@@ -81,7 +81,7 @@ function ImagesController() {
         console.log("ImagesController.upload() public_id   ", public_id);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.upload(fileData, "n6vhv4ad", { "resource_type":"video","public_id":public_id}, function(error, uploadedFile) {
+        cloudinary.v2.uploader.upload(fileData, "n6vhv4ad", { "resource_type":"video","public_id":public_id, "folder":eventId}, function(error, uploadedFile) {
             console.log("uploadedFile is ::::",uploadedFile)
             console.log("error is ::::",error)
             if (error) {
