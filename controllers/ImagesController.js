@@ -83,7 +83,7 @@ function ImagesController() {
         console.log("ImagesController.uploadFile() file data  ", fileData);
         
         //fileData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.upload_unsigned(imageData,"n6vhv4ad", function(error, result) {
+        cloudinary.v2.uploader.upload_unsigned(fileData,"n6vhv4ad", {resource_type:"video","public_id":public_id}, function(error, result) {
             console.log("result", result)
             console.log("error", error)
             return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, result));
