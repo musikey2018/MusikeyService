@@ -39,7 +39,7 @@ function ImagesController() {
         console.log("ImagesController.upload() image data  ", imageData);
         
         //imageData = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-        cloudinary.v2.uploader.upload(imageData,"n6vhv4ad", function(error, uploadedImage) {
+        cloudinary.v2.uploader.upload(imageData,"mwcar4uv", {resource_type:"auto", "upload_preset":"mwcar4uv"}, function(error, uploadedImage) {
             if (error) {
                 console.log("ImagesController.upload() error ocurred", error);
                 return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, null));
