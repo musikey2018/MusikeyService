@@ -84,6 +84,8 @@ function ImagesController() {
         cloudinary.v2.uploader.unsigned_upload(fileData, "agonhyod", { "resource_type":"raw","public_id":public_id, "folder":eventId}, function(error, uploadedImage) {
             if (error) {
                 console.log("ImagesController.upload() error ocurred", error);
+                console.log("errormessage is ::::",error.message)
+                console.log("errormessage is ::::",error.http_code)
                 return res.send(generalResponse.sendFailureResponse("Error Occured :something went wrong while uploading", 400, null));
             } else {
                 if('undefined' != uploadedImage  && null != uploadedImage) {
